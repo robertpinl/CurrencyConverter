@@ -42,5 +42,8 @@ class CurrencySelectionTableVC: UITableViewController {
         delegate?.didSelectCurrency(currency: currencyArray[indexPath.row])
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func backButtonPressed(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 

@@ -2,7 +2,7 @@
 //  Currency.swift
 //  CurrencyConverter
 //
-//  Created by Robert P on 19.03.2021.
+//  Created by Robert Pinl on 19.03.2021.
 //
 
 import UIKit

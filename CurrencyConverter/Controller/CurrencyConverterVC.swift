@@ -43,17 +43,17 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
             }
             fetchedArray.append(Currency(name: "EUR", rate: 1.0))
             self.currencyArray = fetchedArray.sorted { $0.name < $1.name }
-        }
-        
-        DispatchQueue.main.async { [self] in
             
-            if currencyArray.isEmpty == false {
+            DispatchQueue.main.async { [self] in
                 
-                firstCurrencyButton.setTitle("\(currencyArray[8].flag)  \(currencyArray[8].name)", for: .normal)
-                firstCurrency = currencyArray[8]
-                
-                secondCurrencyButton.setTitle("\(currencyArray[31].flag)  \(currencyArray[31].name)", for: .normal)
-                secondCurrency = currencyArray[31]
+                if currencyArray.isEmpty == false {
+                    
+                    firstCurrencyButton.setTitle("\(currencyArray[8].flag)  \(currencyArray[8].name)", for: .normal)
+                    firstCurrency = currencyArray[8]
+                    
+                    secondCurrencyButton.setTitle("\(currencyArray[31].flag)  \(currencyArray[31].name)", for: .normal)
+                    secondCurrency = currencyArray[31]
+                }
             }
         }
     }
@@ -91,6 +91,10 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
                 secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value))
             }
         }
+        
+        if firstCurrencyTextField.text == "" {
+            secondCurrencyLabel.text = ""
+        }
     }
     
     func didSelectCurrency(currency: Currency) {
@@ -109,6 +113,26 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
+        secondCurrencyLabel.text = ""
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if (firstCurrencyTextField.text?.contains("."))! && string == "." {
+            return false
+        }
+
+        if (firstCurrencyTextField.text?.contains("."))! {
+            let limitDecimalPlace = 2
+            let decimalPlace = firstCurrencyTextField.text?.components(separatedBy: ".").last
+            if (decimalPlace?.count)! < limitDecimalPlace {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        return true
     }
     
     //Hide keyboard when user press background

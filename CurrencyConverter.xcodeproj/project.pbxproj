@@ -20,7 +20,6 @@
 		22730DB225A9B33B005F12BC /* RatesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22730DB125A9B33B005F12BC /* RatesData.swift */; };
 		22730DB525A9B34B005F12BC /* RatesApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22730DB425A9B34B005F12BC /* RatesApiManager.swift */; };
 		22F78E3425E6C46B0038F700 /* CurrencySelectionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */; };
-		22F78E3725E6C9C60038F700 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F78E3625E6C9C60038F700 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +38,6 @@
 		22730DB125A9B33B005F12BC /* RatesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesData.swift; sourceTree = "<group>"; };
 		22730DB425A9B34B005F12BC /* RatesApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesApiManager.swift; sourceTree = "<group>"; };
 		22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableVC.swift; sourceTree = "<group>"; };
-		22F78E3625E6C9C60038F700 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +78,6 @@
 				22730DA125A9A4FB005F12BC /* Assets.xcassets */,
 				22730DA325A9A4FB005F12BC /* LaunchScreen.storyboard */,
 				22730DA625A9A4FB005F12BC /* Info.plist */,
-				22F78E3625E6C9C60038F700 /* Constants.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 				2235DE4D2604A3AA0096C481 /* Currency.swift in Sources */,
 				22730D9925A9A4F7005F12BC /* AppDelegate.swift in Sources */,
 				22730D9B25A9A4F7005F12BC /* SceneDelegate.swift in Sources */,
-				22F78E3725E6C9C60038F700 /* Constants.swift in Sources */,
 				223018F626060F4F0023F890 /* ConverterBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
