@@ -34,7 +34,7 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         super.viewDidLoad()
         
         apiService.getCurrency { (rates) in
-
+            
             var fetchedArray = [Currency]()
             
             for (a,i) in rates.rates {
@@ -87,7 +87,6 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
             guard let input = Double(firstCurrencyTextField.text!) else { secondCurrencyLabel.text = ""; return }
             
             let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate
-            print(input, Double((firstCurrency?.rate)!), secondCurrency!.rate)
             if value > 0 {
                 secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value))
             }
@@ -104,22 +103,29 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if (firstCurrencyTextField.text?.contains("."))! && string == "." {
-            return false
+        
+        guard let oldText = textField.text, let r = Range(range, in: oldText) else {
+            return true
         }
-
-        if (firstCurrencyTextField.text?.contains("."))! {
-            let limitDecimalPlace = 2
-            let decimalPlace = firstCurrencyTextField.text?.components(separatedBy: ".").last
-            if (decimalPlace?.count)! < limitDecimalPlace {
-                return true
-            }
-            else {
-                return false
-            }
+        if string == "," {
+                   textField.text = textField.text! + "."
+                   return false
         }
-        return true
+        
+        let newText = oldText.replacingCharacters(in: r, with: string)
+        let isNumeric = newText.isEmpty || (Double(newText) != nil)
+        let numberOfDots = newText.components(separatedBy: ".").count - 1
+        
+        let numberOfDecimalDigits: Int
+        if let dotIndex = newText.firstIndex(of: ".") {
+            numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
+        } else {
+            numberOfDecimalDigits = 0
+        }
+        let substringToReplace = oldText[r]
+        let numberOfCharacters = oldText.count - substringToReplace.count + string.count
+        
+        return isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 2 && numberOfCharacters <= 10
     }
     
     //Hide keyboard when user press background
