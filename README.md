@@ -1,4 +1,4 @@
-<img src="https://github.com/robertpinl/CurrencyConverter/blob/main/ReadmeAssets/CurrencyConverterLogo.png" width="" height="70"/>
+<img src="https://github.com/robertpinl/CurrencyConverter/blob/main/ReadmeAssets/CurrencyConverterLogo.png" width="" height="60"/>
 
 Currency converter for iOS based on ECB rates
 * MVC Design Pattern
