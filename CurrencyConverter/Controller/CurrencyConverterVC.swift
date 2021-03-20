@@ -39,7 +39,6 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
             
             for (a,i) in rates.rates {
                 let newCurrency = Currency(name: a, rate: i)
-                print(newCurrency)
                 fetchedArray.append(newCurrency)
             }
             fetchedArray.append(Currency(name: "EUR", rate: 1.0))
@@ -59,10 +58,7 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print(currencyArray.count)
-    }
-    
+    //MARK: - Currency Selection
     @IBAction func firstCurrencyPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToCurrencySelection", sender: self)
         firstOrSecond = true
@@ -87,9 +83,13 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     @IBAction func textfieldEditingChanged(_ sender: UITextField) {
         
         if (firstCurrency != nil) && (secondCurrency != nil) {
-           
-            let value = Double(firstCurrencyTextField.text!)! * Double((firstCurrency?.rate)!) / secondCurrency!.rate
-            secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value))
+            guard let input = Double(firstCurrencyTextField.text!) else { secondCurrencyLabel.text = ""; return }
+            
+            let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate
+            print(input, Double((firstCurrency?.rate)!), secondCurrency!.rate)
+            if value > 0 {
+                secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value))
+            }
         }
     }
     
@@ -106,10 +106,12 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         }
     }
     
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
     }
     
+    //Hide keyboard when user press background
     @IBAction func backgroundPressed(_ sender: UITapGestureRecognizer) {
         firstCurrencyTextField.resignFirstResponder()
     }

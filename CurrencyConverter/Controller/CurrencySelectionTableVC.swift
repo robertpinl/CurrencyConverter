@@ -33,7 +33,7 @@ class CurrencySelectionTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath)
-        cell.textLabel?.text = "\(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].name)"
+        cell.textLabel?.text = "  \(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].name)"
         cell.textLabel?.tintColor = UIColor(named: "fontColor")
         return cell
     }
