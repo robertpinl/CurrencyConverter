@@ -84,7 +84,8 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     @IBAction func textfieldEditingChanged(_ sender: UITextField) {
         
         if (firstCurrency != nil) && (secondCurrency != nil) {
-            guard let input = Double(firstCurrencyTextField.text!) else { secondCurrencyLabel.text = ""; return }
+            let firstCurrencyValue = firstCurrencyTextField.text!.replacingOccurrences(of: ",", with: ".")
+            guard let input = Double(firstCurrencyValue) else { secondCurrencyLabel.text = ""; return }
             
             let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate
             if value > 0 {
@@ -104,28 +105,18 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        if string.isEmpty { return true }
+        
         guard let oldText = textField.text, let r = Range(range, in: oldText) else {
             return true
         }
-        if string == "," {
-                   textField.text = textField.text! + "."
-                   return false
-        }
-        
+
         let newText = oldText.replacingCharacters(in: r, with: string)
-        let isNumeric = newText.isEmpty || (Double(newText) != nil)
-        let numberOfDots = newText.components(separatedBy: ".").count - 1
-        
-        let numberOfDecimalDigits: Int
-        if let dotIndex = newText.firstIndex(of: ".") {
-            numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
-        } else {
-            numberOfDecimalDigits = 0
-        }
+
         let substringToReplace = oldText[r]
         let numberOfCharacters = oldText.count - substringToReplace.count + string.count
-        
-        return isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 2 && numberOfCharacters <= 10
+
+        return numberOfCharacters <= 10 && newText.isValidDouble(maxDecimalPlaces: 2)
     }
     
     //Hide keyboard when user press background
@@ -148,5 +139,23 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     }
 }
 
+//MARK: - Validate string
+extension String {
+  func isValidDouble(maxDecimalPlaces: Int) -> Bool {
+
+    let formatter = NumberFormatter()
+    formatter.allowsFloats = true
+    let decimalSeparator = formatter.decimalSeparator ?? "."
+
+    if formatter.number(from: self) != nil {
+      let split = self.components(separatedBy: decimalSeparator)
+
+      let digits = split.count == 2 ? split.last ?? "" : ""
+
+      return digits.count <= maxDecimalPlaces
+    }
+    return false
+  }
+}
 
 
