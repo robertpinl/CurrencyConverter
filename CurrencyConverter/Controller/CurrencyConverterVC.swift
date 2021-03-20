@@ -34,7 +34,7 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         super.viewDidLoad()
         
         apiService.getCurrency { (rates) in
-            
+
             var fetchedArray = [Currency]()
             
             for (a,i) in rates.rates {
@@ -80,6 +80,7 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         }
     }
     
+    //MARK: - Textfield Delegate
     @IBAction func textfieldEditingChanged(_ sender: UITextField) {
         
         if (firstCurrency != nil) && (secondCurrency != nil) {
@@ -96,20 +97,6 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
             secondCurrencyLabel.text = ""
         }
     }
-    
-    func didSelectCurrency(currency: Currency) {
-        
-        firstCurrencyTextField.text = ""
-        secondCurrencyLabel.text = ""
-        if firstOrSecond! {
-            firstCurrency = currency
-            firstCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
-        } else {
-            secondCurrency = currency
-            secondCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
-        }
-    }
-    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
@@ -138,6 +125,20 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     //Hide keyboard when user press background
     @IBAction func backgroundPressed(_ sender: UITapGestureRecognizer) {
         firstCurrencyTextField.resignFirstResponder()
+    }
+    
+    //MARK: - Currency Selection Protocol
+    func didSelectCurrency(currency: Currency) {
+        
+        firstCurrencyTextField.text = ""
+        secondCurrencyLabel.text = ""
+        if firstOrSecond! {
+            firstCurrency = currency
+            firstCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
+        } else {
+            secondCurrency = currency
+            secondCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
+        }
     }
 }
 

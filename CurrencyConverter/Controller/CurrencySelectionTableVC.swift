@@ -25,8 +25,7 @@ class CurrencySelectionTableVC: UITableViewController {
         
     }
     
-    // MARK: - TableView Delegates
-    
+    // MARK: - TableView Delegate and Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencyArray.count
     }
@@ -42,6 +41,8 @@ class CurrencySelectionTableVC: UITableViewController {
         delegate?.didSelectCurrency(currency: currencyArray[indexPath.row])
         dismiss(animated: true, completion: nil)
     }
+    
+    //Dismiss without selection
     @IBAction func backButtonPressed(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
