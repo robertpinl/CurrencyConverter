@@ -7,16 +7,20 @@
 
 import UIKit
 
-class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFieldDelegate {
+class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFieldDelegate, rateDifferenceProtocol {
+    
+    var currencyArray = [Currency]()
+    let apiService = RatesApiManager()
     
     var firstCurrency: Currency?
     var secondCurrency: Currency?
+    
     var selectedCurrency: Currency?
     var firstOrSecond: Bool?
-    var hidePrice: Bool = true
     
-    let apiService = RatesApiManager()
-    var currencyArray = [Currency]()
+    let defaults = UserDefaults.standard
+    
+    var ecbDiff: Double = 0.0
     
     let formatter: NumberFormatter = {
         let nf = NumberFormatter()
@@ -46,37 +50,73 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
             
             DispatchQueue.main.async { [self] in
                 
+                var indexOne: Int = 8
+                var indexTwo: Int = 31
+                
+                let defaultOne = defaults.string(forKey: "CurrencyOne")
+                let defaultTwo = defaults.string(forKey: "CurrencyTwo")
+                
+                
+                if defaultOne != nil {
+                    
+                    var currentIndexOne = 0
+                    
+                    for i in currencyArray
+                    {
+                        if i.name == defaultOne {
+                            indexOne = currentIndexOne
+                            break
+                        }
+                        currentIndexOne += 1
+                    }
+                }
+                
+                if defaultTwo != nil {
+                    
+                    var currentIndexTwo = 0
+                    
+                    for i in currencyArray
+                    {
+                        if i.name == defaultTwo {
+                            indexTwo = currentIndexTwo
+                            break
+                        }
+                        currentIndexTwo += 1
+                    }
+                }
+                
                 if currencyArray.isEmpty == false {
                     
-                    firstCurrencyButton.setTitle("\(currencyArray[8].flag)  \(currencyArray[8].name)", for: .normal)
-                    firstCurrency = currencyArray[8]
+                    firstCurrencyButton.setTitle("\(currencyArray[indexOne].flag)  \(currencyArray[indexOne].name)", for: .normal)
+                    firstCurrency = currencyArray[indexOne]
                     
-                    secondCurrencyButton.setTitle("\(currencyArray[31].flag)  \(currencyArray[31].name)", for: .normal)
-                    secondCurrency = currencyArray[31]
+                    secondCurrencyButton.setTitle("\(currencyArray[indexTwo].flag)  \(currencyArray[indexTwo].name)", for: .normal)
+                    secondCurrency = currencyArray[indexTwo]
                 }
             }
         }
+        
+        ecbDiff = defaults.double(forKey: "ecbDiff")
+        
+        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsViewController
+        viewController?.delegate = self
     }
     
     //MARK: - Currency Selection
     @IBAction func firstCurrencyPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToCurrencySelection", sender: self)
         firstOrSecond = true
-        hidePrice = true
     }
     
     @IBAction func secondCurrencyPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToCurrencySelection", sender: self)
         firstOrSecond = false
-        hidePrice = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToCurrencySelection" {
             let destination = segue.destination as? CurrencySelectionTableVC
             destination?.delegate = self
-            destination?.currencyArray = currencyArray
-            destination?.hideRate = hidePrice
         }
     }
     
@@ -89,7 +129,7 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
             
             let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate
             if value > 0 {
-                secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value))
+                secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value + (value * self.ecbDiff / 100)))
             }
         }
         
@@ -110,12 +150,12 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         guard let oldText = textField.text, let r = Range(range, in: oldText) else {
             return true
         }
-
+        
         let newText = oldText.replacingCharacters(in: r, with: string)
-
+        
         let substringToReplace = oldText[r]
         let numberOfCharacters = oldText.count - substringToReplace.count + string.count
-
+        
         return numberOfCharacters <= 10 && newText.isValidDouble(maxDecimalPlaces: 2)
     }
     
@@ -132,30 +172,18 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         if firstOrSecond! {
             firstCurrency = currency
             firstCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
+            defaults.set(currency.name, forKey: "CurrencyOne")
+            
         } else {
             secondCurrency = currency
             secondCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
+            defaults.set(currency.name, forKey: "CurrencyTwo")
+            
         }
     }
-}
-
-//MARK: - Validate string
-extension String {
-  func isValidDouble(maxDecimalPlaces: Int) -> Bool {
-
-    let formatter = NumberFormatter()
-    formatter.allowsFloats = true
-    let decimalSeparator = formatter.decimalSeparator ?? "."
-
-    if formatter.number(from: self) != nil {
-      let split = self.components(separatedBy: decimalSeparator)
-
-      let digits = split.count == 2 ? split.last ?? "" : ""
-
-      return digits.count <= maxDecimalPlaces
+    
+    func didChangeEcbDiff(percent: Double) {
+        self.ecbDiff = percent
     }
-    return false
-  }
 }
-
 
