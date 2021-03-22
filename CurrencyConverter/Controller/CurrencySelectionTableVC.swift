@@ -20,7 +20,7 @@ class CurrencySelectionTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         apiService.delegate = self
         
         apiService.getCurrency { (rates) in

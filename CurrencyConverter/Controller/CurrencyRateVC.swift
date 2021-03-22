@@ -7,11 +7,18 @@
 
 import UIKit
 
-class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSource, RatesSettingsDelegate {
+class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var currencyArray = [Currency]()
-    var percentage: Double = 0.0
+    let defaults = UserDefaults.standard
     var apiService = RatesApiManager()
+    
+    var ecbRateDiff: Double = 0.0 {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     let formatter: NumberFormatter = {
         let nf = NumberFormatter()
         nf.maximumFractionDigits = 2
@@ -20,9 +27,16 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }()
     
     @IBOutlet weak var tableView: UITableView!
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ecbRateDiff = defaults.double(forKey: "ecbDiff")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ecbRateDiff = defaults.double(forKey: "ecbDiff")
         
         apiService.delegate = self
         
@@ -40,8 +54,6 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
                 self.tableView.reloadData()
             }
         }
-        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsVC
-        viewController?.delegate = self
     }
     
     // MARK: - TableView Delegates
@@ -53,7 +65,7 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rateCell", for: indexPath)
         cell.textLabel?.text = "  \(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].name)"
-        cell.detailTextLabel?.text = formatter.string(from: NSNumber(value: currencyArray[indexPath.row].rate + (currencyArray[indexPath.row].rate * self.percentage / 100)))
+        cell.detailTextLabel?.text = formatter.string(from: NSNumber(value: currencyArray[indexPath.row].rate + (currencyArray[indexPath.row].rate * self.ecbRateDiff / 100)))
         cell.textLabel?.font = UIFont(name: "Avenir", size: 19)
         cell.textLabel?.textColor = UIColor(named: "fontColor")
         cell.detailTextLabel?.font = UIFont(name: "Avenir-Medium", size: 19)
@@ -63,11 +75,6 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
-    }
-    
-    func didChangeEcbDiff(percent: Double) {
-        self.percentage = percent
-        tableView.reloadData()
     }
 }
 

@@ -8,13 +8,14 @@
 import UIKit
 
 protocol RatesSettingsDelegate {
-    func didChangeEcbDiff(percent: Double)
+    var ecbRateDiff: Double { get set }
 }
 
 class SettingsVC: UIViewController, UITextFieldDelegate {
     
     var delegate: RatesSettingsDelegate?
     let defaults = UserDefaults.standard
+    var ecbRateDiff = 0.0
     let formatter: NumberFormatter = {
         let nf = NumberFormatter()
         nf.maximumFractionDigits = 2
@@ -27,26 +28,26 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ecbDiff = defaults.double(forKey: "ecbDiff")
-        ecbDiffTextField.text = formatter.string(from: NSNumber(value: ecbDiff))
-        // Do any additional setup after loading the view.
+        ecbRateDiff = defaults.double(forKey: "ecbDiff")
+        ecbDiffTextField.text = formatter.string(from: NSNumber(value: ecbRateDiff))
 
     }
     @IBAction func ecbDiffChanged(_ sender: UITextField) {
         guard let value = Double(sender.text!) else { return }
-        delegate?.didChangeEcbDiff(percent: value)
+        ecbRateDiff = value
+        delegate?.ecbRateDiff = value
         defaults.set(value, forKey: "ecbDiff")
+        
+        if sender.text == "" {
+            ecbRateDiff = 0.0
+            delegate?.ecbRateDiff = 0.0
+            defaults.set(0.0, forKey: "ecbDiff")
+        }
+        print(defaults.double(forKey: "ecbDiff"))
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.text == "" {
-            delegate?.didChangeEcbDiff(percent: 0.0)
-            defaults.set(0.0, forKey: "ecbDiff")
-        }
     }
     
     //User input validation

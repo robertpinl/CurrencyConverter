@@ -20,7 +20,12 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     
     let defaults = UserDefaults.standard
     
-    var ecbDiff: Double = 0.0
+    var ecbRateDiff: Double = 0.0 {
+        didSet {
+            self.firstCurrencyTextField.text = ""
+            self.secondCurrencyLabel.text = ""
+        }
+    }
     
     let formatter: NumberFormatter = {
         let nf = NumberFormatter()
@@ -35,11 +40,14 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var secondCurrencyButton: UIButton!
     @IBOutlet weak var secondCurrencyLabel: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        ecbRateDiff = defaults.double(forKey: "ecbDiff")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsVC
-        viewController?.delegate = self
+        ecbRateDiff = defaults.double(forKey: "ecbDiff")
         
         apiService.delegate = self
         
@@ -97,8 +105,6 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-        
-        ecbDiff = defaults.double(forKey: "ecbDiff")
     }
     
     //MARK: - Currency Selection
@@ -128,7 +134,8 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
             
             let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate
             if value > 0 {
-                secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value + (value * self.ecbDiff / 100)))
+                secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value + (value * self.ecbRateDiff / 100)))
+                print(ecbRateDiff)
             }
         }
         
@@ -171,6 +178,7 @@ extension CurrencyConverterVC: CurrencySelectionDelegate {
         
         firstCurrencyTextField.text = ""
         secondCurrencyLabel.text = ""
+        
         if firstOrSecond! {
             firstCurrency = currency
             firstCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
@@ -182,13 +190,6 @@ extension CurrencyConverterVC: CurrencySelectionDelegate {
             defaults.set(currency.name, forKey: "CurrencyTwo")
             
         }
-    }
-}
-
-//MARK: - User change ECB rates difference
-extension CurrencyConverterVC: RatesSettingsDelegate {
-    func didChangeEcbDiff(percent: Double) {
-        self.ecbDiff = percent
     }
 }
 
