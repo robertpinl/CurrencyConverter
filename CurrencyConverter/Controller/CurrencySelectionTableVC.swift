@@ -13,13 +13,15 @@ protocol CurrencySelectionDelegate {
 
 class CurrencySelectionTableVC: UITableViewController {
     
-    let apiService = RatesApiManager()
+    var apiService = RatesApiManager()
     var currencyArray = [Currency]()
     
     var delegate: CurrencySelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        apiService.delegate = self
         
         apiService.getCurrency { (rates) in
             
@@ -37,31 +39,40 @@ class CurrencySelectionTableVC: UITableViewController {
             }
         }
     }
-
-// MARK: - TableView Delegate and Data Source
-override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.currencyArray.count
+    
+    // MARK: - TableView Delegate and Data Source
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.currencyArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath)
+        cell.textLabel?.text = "  \(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].name)"
+        cell.textLabel?.tintColor = UIColor(named: "fontColor")
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelectCurrency(currency: currencyArray[indexPath.row])
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    //Dismiss without selection
+    @IBAction func backButtonPressed(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath)
-    cell.textLabel?.text = "  \(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].name)"
-    cell.textLabel?.tintColor = UIColor(named: "fontColor")
-    return cell
-}
-
-override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    delegate?.didSelectCurrency(currency: currencyArray[indexPath.row])
-    dismiss(animated: true, completion: nil)
-}
-
-override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 50
-}
-
-//Dismiss without selection
-@IBAction func backButtonPressed(_ sender: UITapGestureRecognizer) {
-    dismiss(animated: true, completion: nil)
-}
+//MARK: - Error handling
+extension CurrencySelectionTableVC: RatesManagerDelegate {
+    func didFailWithError(error: Error) {
+        DispatchQueue.main.async {
+            self.showAlertMessage(title: "Connection Error", message: error.localizedDescription)
+        }
+    }
 }
 

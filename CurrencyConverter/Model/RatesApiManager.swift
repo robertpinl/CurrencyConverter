@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol RatesManagerDelegate {
+    func didFailWithError(error: Error)
+}
+
 struct  RatesApiManager {
+    
+    var delegate: RatesManagerDelegate?
     
     func getCurrency(completion: @escaping (RatesData) -> Void) {
         if let url = URL(string: "https://api.exchangeratesapi.io/latest") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 if let safeData = data {
@@ -23,7 +29,7 @@ struct  RatesApiManager {
                         let rates = try decoder.decode(RatesData.self, from: safeData)
                             completion(rates)
                     } catch {
-                        print(error)
+                        self.delegate?.didFailWithError(error: error)
                     }
                 }
             }

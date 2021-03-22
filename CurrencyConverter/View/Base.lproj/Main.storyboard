@@ -203,6 +203,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="tintColor" name="fontColor"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -256,6 +257,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" name="fontColor"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -338,7 +340,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="VES-u4-ilF"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                 <color key="textColor" name="fontColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>

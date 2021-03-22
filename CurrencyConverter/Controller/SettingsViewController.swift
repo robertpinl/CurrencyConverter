@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol rateDifferenceProtocol {
+protocol RatesSettingsDelegate {
     func didChangeEcbDiff(percent: Double)
 }
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
     
-    var delegate: rateDifferenceProtocol?
+    var delegate: RatesSettingsDelegate?
     let defaults = UserDefaults.standard
     let formatter: NumberFormatter = {
         let nf = NumberFormatter()
@@ -57,5 +57,4 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func backgroundPressed(_ sender: UITapGestureRecognizer) {
         ecbDiffTextField.resignFirstResponder()
     }
-
 }

@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSource, rateDifferenceProtocol {
-
+class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSource, RatesSettingsDelegate {
+    
     var currencyArray = [Currency]()
     var percentage: Double = 0.0
-    let apiService = RatesApiManager()
+    var apiService = RatesApiManager()
     let formatter: NumberFormatter = {
         let nf = NumberFormatter()
         nf.maximumFractionDigits = 2
@@ -23,6 +23,8 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        apiService.delegate = self
         
         apiService.getCurrency { (rates) in
             
@@ -39,7 +41,7 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
             }
         }
         let viewController = self.tabBarController?.viewControllers?[2] as? SettingsViewController
-            viewController?.delegate = self
+        viewController?.delegate = self
     }
     
     // MARK: - TableView Delegates
@@ -63,6 +65,15 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func didChangeEcbDiff(percent: Double) {
         self.percentage = percent
         tableView.reloadData()
+    }
+}
+
+//MARK: - Error handling
+extension CurrencyRateVC: RatesManagerDelegate {
+    func didFailWithError(error: Error) {
+        DispatchQueue.main.async {
+            self.showAlertMessage(title: "Connection Error", message: error.localizedDescription)
+        }
     }
 }
 

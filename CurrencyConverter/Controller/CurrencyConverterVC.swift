@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFieldDelegate, rateDifferenceProtocol {
+class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     
     var currencyArray = [Currency]()
-    let apiService = RatesApiManager()
+    var apiService = RatesApiManager()
     
     var firstCurrency: Currency?
     var secondCurrency: Currency?
@@ -29,6 +29,7 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         return nf
     }()
     
+    
     @IBOutlet weak var firstCurrencyButton: UIButton!
     @IBOutlet weak var firstCurrencyTextField: UITextField!
     @IBOutlet weak var secondCurrencyButton: UIButton!
@@ -36,6 +37,11 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsViewController
+        viewController?.delegate = self
+        
+        apiService.delegate = self
         
         apiService.getCurrency { (rates) in
             
@@ -56,9 +62,7 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
                 let defaultOne = defaults.string(forKey: "CurrencyOne")
                 let defaultTwo = defaults.string(forKey: "CurrencyTwo")
                 
-                
                 if defaultOne != nil {
-                    
                     var currentIndexOne = 0
                     
                     for i in currencyArray
@@ -72,7 +76,6 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
                 }
                 
                 if defaultTwo != nil {
-                    
                     var currentIndexTwo = 0
                     
                     for i in currencyArray
@@ -97,9 +100,6 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         }
         
         ecbDiff = defaults.double(forKey: "ecbDiff")
-        
-        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsViewController
-        viewController?.delegate = self
     }
     
     //MARK: - Currency Selection
@@ -164,7 +164,9 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
         firstCurrencyTextField.resignFirstResponder()
     }
     
-    //MARK: - Currency Selection Protocol
+}
+//MARK: - Currency Selection Protocol
+extension CurrencyConverterVC: CurrencySelectionDelegate {
     func didSelectCurrency(currency: Currency) {
         
         firstCurrencyTextField.text = ""
@@ -181,9 +183,21 @@ class CurrencyConverterVC: UIViewController, CurrencySelectionDelegate, UITextFi
             
         }
     }
-    
+}
+
+//MARK: - User change ECB rates difference
+extension CurrencyConverterVC: RatesSettingsDelegate {
     func didChangeEcbDiff(percent: Double) {
         self.ecbDiff = percent
+    }
+}
+
+//MARK: - Error handling
+extension CurrencyConverterVC: RatesManagerDelegate {
+    func didFailWithError(error: Error) {
+        DispatchQueue.main.async {
+            self.showAlertMessage(title: "Connection Error", message: error.localizedDescription)
+        }
     }
 }
 
