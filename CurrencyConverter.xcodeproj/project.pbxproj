@@ -20,7 +20,7 @@
 		22730DA525A9A4FB005F12BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22730DA325A9A4FB005F12BC /* LaunchScreen.storyboard */; };
 		22730DB225A9B33B005F12BC /* RatesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22730DB125A9B33B005F12BC /* RatesData.swift */; };
 		22730DB525A9B34B005F12BC /* RatesApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22730DB425A9B34B005F12BC /* RatesApiManager.swift */; };
-		22733D3C26074B3B00C896CF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22733D3B26074B3B00C896CF /* SettingsViewController.swift */; };
+		22733D3C26074B3B00C896CF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22733D3B26074B3B00C896CF /* SettingsVC.swift */; };
 		22733D3F2607524900C896CF /* SettingBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22733D3E2607524900C896CF /* SettingBackgroundView.swift */; };
 		22733D422607583600C896CF /* ValidateDouble+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22733D412607583600C896CF /* ValidateDouble+Extension.swift */; };
 		22F78E3425E6C46B0038F700 /* CurrencySelectionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */; };
@@ -42,7 +42,7 @@
 		22730DA625A9A4FB005F12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22730DB125A9B33B005F12BC /* RatesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesData.swift; sourceTree = "<group>"; };
 		22730DB425A9B34B005F12BC /* RatesApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesApiManager.swift; sourceTree = "<group>"; };
-		22733D3B26074B3B00C896CF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		22733D3B26074B3B00C896CF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		22733D3E2607524900C896CF /* SettingBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBackgroundView.swift; sourceTree = "<group>"; };
 		22733D412607583600C896CF /* ValidateDouble+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidateDouble+Extension.swift"; sourceTree = "<group>"; };
 		22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableVC.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 				22730D9C25A9A4F7005F12BC /* CurrencyConverterVC.swift */,
 				22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */,
 				2269832025AC93E1004D1B1E /* CurrencyRateVC.swift */,
-				22733D3B26074B3B00C896CF /* SettingsViewController.swift */,
+				22733D3B26074B3B00C896CF /* SettingsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,7 +204,7 @@
 			files = (
 				223018F9260610F00023F890 /* SplitLineView.swift in Sources */,
 				22730DB225A9B33B005F12BC /* RatesData.swift in Sources */,
-				22733D3C26074B3B00C896CF /* SettingsViewController.swift in Sources */,
+				22733D3C26074B3B00C896CF /* SettingsVC.swift in Sources */,
 				2269832125AC93E1004D1B1E /* CurrencyRateVC.swift in Sources */,
 				22436E352608855600D61874 /* Alert+Extension.swift in Sources */,
 				22733D422607583600C896CF /* ValidateDouble+Extension.swift in Sources */,

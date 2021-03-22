@@ -38,7 +38,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsViewController
+        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsVC
         viewController?.delegate = self
         
         apiService.delegate = self

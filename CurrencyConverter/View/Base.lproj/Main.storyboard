@@ -295,7 +295,7 @@
         <!--SETTINGS-->
         <scene sceneID="6gK-e9-Gtj">
             <objects>
-                <viewController id="YNP-xX-GeN" customClass="SettingsViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YNP-xX-GeN" customClass="SettingsVC" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uUa-6j-3gV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

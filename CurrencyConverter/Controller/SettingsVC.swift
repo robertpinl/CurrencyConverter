@@ -1,8 +1,8 @@
 //
-//  SettingsViewController.swift
+//  SettingsVC.swift
 //  CurrencyConverter
 //
-//  Created by Robert P on 21.03.2021.
+//  Created by Robert Pinl on 21.03.2021.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ protocol RatesSettingsDelegate {
     func didChangeEcbDiff(percent: Double)
 }
 
-class SettingsViewController: UIViewController, UITextFieldDelegate {
+class SettingsVC: UIViewController, UITextFieldDelegate {
     
     var delegate: RatesSettingsDelegate?
     let defaults = UserDefaults.standard
@@ -36,6 +36,17 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         guard let value = Double(sender.text!) else { return }
         delegate?.didChangeEcbDiff(percent: value)
         defaults.set(value, forKey: "ecbDiff")
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text == "" {
+            delegate?.didChangeEcbDiff(percent: 0.0)
+            defaults.set(0.0, forKey: "ecbDiff")
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

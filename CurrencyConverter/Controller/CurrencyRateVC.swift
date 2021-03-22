@@ -40,7 +40,7 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
                 self.tableView.reloadData()
             }
         }
-        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsViewController
+        let viewController = self.tabBarController?.viewControllers?[2] as? SettingsVC
         viewController?.delegate = self
     }
     
