@@ -49,6 +49,7 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //User input validation
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if string.isEmpty { return true }

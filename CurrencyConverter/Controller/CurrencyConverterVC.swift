@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  CurrencyConverter
 //
-//  Created by Robert P on 09.01.2021.
+//  Created by Robert Pinl on 09.01.2021.
 //
 
 import UIKit
@@ -54,40 +54,39 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
             fetchedArray.append(Currency(name: "EUR", rate: 1.0))
             self.currencyArray = fetchedArray.sorted { $0.name < $1.name }
             
+            var indexOne: Int = 8
+            var indexTwo: Int = 31
+            
+            let defaultOne = self.defaults.string(forKey: "CurrencyOne")
+            let defaultTwo = self.defaults.string(forKey: "CurrencyTwo")
+            
+            if defaultOne != nil {
+                var currentIndexOne = 0
+                
+                for i in self.currencyArray
+                {
+                    if i.name == defaultOne {
+                        indexOne = currentIndexOne
+                        break
+                    }
+                    currentIndexOne += 1
+                }
+            }
+            
+            if defaultTwo != nil {
+                var currentIndexTwo = 0
+                
+                for i in self.currencyArray
+                {
+                    if i.name == defaultTwo {
+                        indexTwo = currentIndexTwo
+                        break
+                    }
+                    currentIndexTwo += 1
+                }
+            }
+            
             DispatchQueue.main.async { [self] in
-                
-                var indexOne: Int = 8
-                var indexTwo: Int = 31
-                
-                let defaultOne = defaults.string(forKey: "CurrencyOne")
-                let defaultTwo = defaults.string(forKey: "CurrencyTwo")
-                
-                if defaultOne != nil {
-                    var currentIndexOne = 0
-                    
-                    for i in currencyArray
-                    {
-                        if i.name == defaultOne {
-                            indexOne = currentIndexOne
-                            break
-                        }
-                        currentIndexOne += 1
-                    }
-                }
-                
-                if defaultTwo != nil {
-                    var currentIndexTwo = 0
-                    
-                    for i in currencyArray
-                    {
-                        if i.name == defaultTwo {
-                            indexTwo = currentIndexTwo
-                            break
-                        }
-                        currentIndexTwo += 1
-                    }
-                }
-                
                 if currencyArray.isEmpty == false {
                     
                     firstCurrencyButton.setTitle("\(currencyArray[indexOne].flag)  \(currencyArray[indexOne].name)", for: .normal)
@@ -143,6 +142,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         secondCurrencyLabel.text = ""
     }
     
+    //User input validation
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if string.isEmpty { return true }

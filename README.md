@@ -6,4 +6,4 @@ Currency converter for iOS based on ECB rates
 * JSON parsing using Codable
 * Light and Dark appearances
 
-<img src="https://github.com/robertpinl/CurrencyConverter/blob/main/ReadmeAssets/CurrencyConverterScreenshot.png" width="" height="450"/>
+<img src="https://github.com/robertpinl/CurrencyConverter/blob/main/ReadmeAssets/CurrencyConverterScreenshot.png" width="696" height="450"/>
