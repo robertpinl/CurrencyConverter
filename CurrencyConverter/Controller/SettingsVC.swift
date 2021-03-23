@@ -7,13 +7,8 @@
 
 import UIKit
 
-protocol RatesSettingsDelegate {
-    var ecbRateDiff: Double { get set }
-}
-
 class SettingsVC: UIViewController, UITextFieldDelegate {
     
-    var delegate: RatesSettingsDelegate?
     let defaults = UserDefaults.standard
     var ecbRateDiff = 0.0
     let formatter: NumberFormatter = {
@@ -33,17 +28,15 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
 
     }
     @IBAction func ecbDiffChanged(_ sender: UITextField) {
-        guard let value = Double(sender.text!) else { return }
-        ecbRateDiff = value
-        delegate?.ecbRateDiff = value
+        let value = sender.text!.replacingOccurrences(of: ",", with: ".")
+        guard let doubleValue = Double(value) else { return }
+        ecbRateDiff = doubleValue
         defaults.set(value, forKey: "ecbDiff")
         
         if sender.text == "" {
             ecbRateDiff = 0.0
-            delegate?.ecbRateDiff = 0.0
             defaults.set(0.0, forKey: "ecbDiff")
         }
-        print(defaults.double(forKey: "ecbDiff"))
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

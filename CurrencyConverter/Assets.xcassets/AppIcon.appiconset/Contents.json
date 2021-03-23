@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "iPhone-notification@2x.png",
+      "filename" : "iPad-notifications@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
@@ -61,7 +61,7 @@
       "size" : "20x20"
     },
     {
-      "filename" : "iPad-notifications@2x.png",
+      "filename" : "iPad-notifications@2x-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"

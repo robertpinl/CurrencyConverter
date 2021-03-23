@@ -42,7 +42,7 @@ class CurrencySelectionTableVC: UITableViewController {
     
     // MARK: - TableView Delegate and Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.currencyArray.count
+        return currencyArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

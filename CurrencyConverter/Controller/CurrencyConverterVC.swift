@@ -135,7 +135,6 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
             let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate
             if value > 0 {
                 secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value + (value * self.ecbRateDiff / 100)))
-                print(ecbRateDiff)
             }
         }
         
