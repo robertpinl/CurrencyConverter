@@ -3,7 +3,7 @@
 //  CurrencyConverter
 //
 //  Created by Robert Pinl on 09.01.2021.
-//
+//https://api.exchangerate.host/latest?symbols=CAD,HKD,ISK,PHP,DKK,HUF,CZK,AUD,RON,SEK,IDR,INR,BRL,RUB,HRK,JPY,THB,CHF,SGD,PLN,BGN,TRY,CNY,NOK,NZD,ZAR,USD,MXN,ILS,GBP,KRW,MYR
 
 import UIKit
 
@@ -16,7 +16,7 @@ struct  RatesApiManager {
     var delegate: RatesManagerDelegate?
     
     func getCurrency(completion: @escaping (RatesData) -> Void) {
-        if let url = URL(string: "https://api.exchangeratesapi.io/latest") {
+        if let url = URL(string: "https://api.exchangerate.host/latest?symbols=CAD,HKD,ISK,PHP,DKK,HUF,CZK,AUD,RON,SEK,IDR,INR,BRL,RUB,HRK,JPY,THB,CHF,SGD,PLN,BGN,TRY,CNY,NOK,NZD,ZAR,USD,MXN,ILS,GBP,KRW,MYR") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {

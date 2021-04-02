@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V71-Gg-zbd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -208,7 +209,7 @@
             <objects>
                 <tableViewController id="liB-dV-1KJ" customClass="CurrencySelectionTableVC" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FPA-zx-Ozf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="WF4-dQ-L0s">
@@ -370,20 +371,20 @@
                                 <rect key="frame" x="20" y="141.5" width="374" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7iK-Lu-YBd">
-                                        <rect key="frame" x="5" y="10" width="364" height="30"/>
+                                        <rect key="frame" x="20" y="10" width="349" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ8-Wj-x16">
-                                                <rect key="frame" x="0.0" y="0.0" width="364" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="349" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  ECB rates difference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yC8-x7-amD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="264" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rates difference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yC8-x7-amD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="249" height="30"/>
                                                         <color key="tintColor" name="fontColor"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hD6-B7-cnj">
-                                                        <rect key="frame" x="264" y="0.0" width="100" height="30"/>
+                                                        <rect key="frame" x="249" y="0.0" width="100" height="30"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Lj-mT-tWU">
                                                                 <rect key="frame" x="0.0" y="0.0" width="66" height="30"/>
@@ -418,7 +419,7 @@
                                 <constraints>
                                     <constraint firstItem="7iK-Lu-YBd" firstAttribute="top" secondItem="Atz-bD-H7E" secondAttribute="top" constant="10" id="AMj-jb-lcI"/>
                                     <constraint firstAttribute="bottom" secondItem="7iK-Lu-YBd" secondAttribute="bottom" constant="10" id="GIJ-ws-ZvS"/>
-                                    <constraint firstItem="7iK-Lu-YBd" firstAttribute="leading" secondItem="Atz-bD-H7E" secondAttribute="leading" constant="5" id="a34-f9-XhD"/>
+                                    <constraint firstItem="7iK-Lu-YBd" firstAttribute="leading" secondItem="Atz-bD-H7E" secondAttribute="leading" constant="20" id="a34-f9-XhD"/>
                                     <constraint firstAttribute="trailing" secondItem="7iK-Lu-YBd" secondAttribute="trailing" constant="5" id="j8O-JE-f2E"/>
                                     <constraint firstAttribute="height" constant="50" id="m7y-HZ-mvR"/>
                                     <constraint firstAttribute="width" constant="500" id="yz2-b6-RBK"/>
@@ -503,7 +504,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XYz-RJ-lUh"/>
+        <segue reference="al0-Jf-kqc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left.arrow.right.circle" catalog="system" width="128" height="121"/>
@@ -520,7 +521,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="fontColor">
-            <color red="0.12999999523162842" green="0.12999999523162842" blue="0.12999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
