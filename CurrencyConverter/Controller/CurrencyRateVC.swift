@@ -38,7 +38,6 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ecbRateDiff = defaults.double(forKey: "ecbDiff")
         
         apiService.delegate = self
         
@@ -76,13 +75,30 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.resignFirstResponder()
+    }
 }
 
+//MARK: - SearchBar
 extension CurrencyRateVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = searchText.isEmpty ? currencyArray : currencyArray.filter { (item: Currency) -> Bool in
-            return item.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            return (item.symbol.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil)  || (item.symbol.range(of: searchText,options: .caseInsensitive, range: nil, locale: nil) != nil)
         }
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        filteredData = currencyArray
         tableView.reloadData()
     }
 }

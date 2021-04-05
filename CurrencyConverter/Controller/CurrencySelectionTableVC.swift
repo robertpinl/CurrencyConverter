@@ -15,8 +15,11 @@ class CurrencySelectionTableVC: UITableViewController {
     
     var apiService = RatesApiManager()
     var currencyArray = [Currency]()
+    var filteredData = [Currency]()
     
     var delegate: CurrencySelectionDelegate?
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,7 @@ class CurrencySelectionTableVC: UITableViewController {
             }
             
             self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
+            self.filteredData = self.currencyArray
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -42,12 +46,12 @@ class CurrencySelectionTableVC: UITableViewController {
     
     // MARK: - TableView Delegate and Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currencyArray.count
+        return filteredData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath) as! CurrencySelectionTableViewCell
-        let currency = currencyArray[indexPath.row]
+        let currency = filteredData[indexPath.row]
         cell.flagLabel.text = currency.flag
         cell.descriptionLabel.text = currency.name
         cell.codeLabel.text = currency.symbol
@@ -56,7 +60,7 @@ class CurrencySelectionTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectCurrency(currency: currencyArray[indexPath.row])
+        delegate?.didSelectCurrency(currency: filteredData[indexPath.row])
         dismiss(animated: true, completion: nil)
     }
     
@@ -67,6 +71,29 @@ class CurrencySelectionTableVC: UITableViewController {
     //Dismiss without selection
     @IBAction func backButtonPressed(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: - Search bar
+extension CurrencySelectionTableVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredData = searchText.isEmpty ? currencyArray : currencyArray.filter { (item: Currency) -> Bool in
+            return  (item.name?.range(of: searchText,options: .caseInsensitive, range: nil, locale: nil) != nil) || (item.symbol.range(of: searchText,options: .caseInsensitive, range: nil, locale: nil) != nil)
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        
+        filteredData = currencyArray
+        tableView.reloadData()
     }
 }
 

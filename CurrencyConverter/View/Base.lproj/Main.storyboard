@@ -235,9 +235,12 @@
                                         <constraint firstAttribute="height" constant="44" id="Hpz-kx-N7N"/>
                                     </constraints>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="liB-dV-1KJ" id="0vS-If-kpV"/>
+                                    </connections>
                                 </searchBar>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="backgroundColor"/>
                             <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="6Qx-GJ-i3e" firstAttribute="top" secondItem="gJc-5f-wq6" secondAttribute="bottom" constant="16" id="0g0-yQ-ms4"/>
@@ -260,13 +263,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇨🇿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Au-R7-OU6">
-                                            <rect key="frame" x="20" y="12.5" width="28" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <rect key="frame" x="20" y="11.5" width="31" height="32.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hch-1Z-DAG">
-                                            <rect key="frame" x="56" y="14.5" width="46.5" height="26"/>
+                                            <rect key="frame" x="59" y="14.5" width="46.5" height="26"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                             <color key="textColor" name="fontColor"/>
                                             <nil key="highlightedColor"/>
@@ -287,6 +290,7 @@
                                         <constraint firstItem="3Au-R7-OU6" firstAttribute="leading" secondItem="gpx-5O-iDM" secondAttribute="leadingMargin" id="ggR-1N-EpL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" name="backgroundColor"/>
                                 <color key="tintColor" name="fontColor"/>
                                 <connections>
                                     <outlet property="codeLabel" destination="ceG-53-Ar7" id="W6l-ZJ-yYN"/>
@@ -301,6 +305,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="b5H-Wg-jKQ"/>
+                    <connections>
+                        <outlet property="searchBar" destination="6Qx-GJ-i3e" id="VTI-pO-Dh9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtK-EI-al7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="5Mk-7w-ack">
@@ -331,8 +338,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇹🇹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJm-9A-s9M">
-                                                    <rect key="frame" x="20" y="17.5" width="28" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <rect key="frame" x="20" y="14" width="35" height="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -343,7 +350,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-3" translatesAutoresizingMaskIntoConstraints="NO" id="9Cf-nD-6Gz">
-                                                    <rect key="frame" x="56" y="11.5" width="125" height="42.5"/>
+                                                    <rect key="frame" x="63" y="11.5" width="125" height="42.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-Gp-4Hp">
                                                             <rect key="frame" x="0.0" y="0.0" width="125" height="26"/>
