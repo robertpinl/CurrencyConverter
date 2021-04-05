@@ -38,22 +38,30 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         apiService.delegate = self
         
         apiService.getRates(url: K.ratesUrl) { (rates) in
-            
-            var fetchedArray = [Currency]()
-            
-            for (a,i) in rates.rates {
-                let newCurrency = Currency(symbol: a, rate: i, name: nil)
-                fetchedArray.append(newCurrency)
-            }
-            self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
-            self.filteredData = self.currencyArray
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            self.apiService.getSymbols(url: K.symbolsUrl) { (symbol) in
+                
+                var fetchedArray = [Currency]()
+                
+                for (a,i) in rates.rates {
+                    let newCurrency = Currency(symbol: a, rate: i, name: nil)
+                    fetchedArray.append(newCurrency)
+                }
+                
+                for o in symbol.symbols {
+                    if let index = fetchedArray.firstIndex(where: { $0.symbol == o.key }) {
+                        fetchedArray[index].name = o.value.description
+                    }
+                }
+                
+                self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
+                self.filteredData = self.currencyArray
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -68,6 +76,7 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "rateCell", for: indexPath) as! CurrencyRateTableViewCell
         cell.flagLabel.text = filteredData[indexPath.row].flag
         cell.symbolLabel.text = filteredData[indexPath.row].symbol
+        cell.nameLabel.text = filteredData[indexPath.row].name
         cell.rateLabel.text = formatter.string(from: NSNumber(value: filteredData[indexPath.row].rate ?? 0.0 + (filteredData[indexPath.row].rate ?? 0.0 * (self.ecbRateDiff / 100))))
         return cell
     }
@@ -85,7 +94,7 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
 extension CurrencyRateVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = searchText.isEmpty ? currencyArray : currencyArray.filter { (item: Currency) -> Bool in
-            return (item.symbol.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil)  || (item.symbol.range(of: searchText,options: .caseInsensitive, range: nil, locale: nil) != nil)
+            return (item.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil)  || (item.symbol.range(of: searchText,options: .caseInsensitive, range: nil, locale: nil) != nil)
         }
         tableView.reloadData()
     }

@@ -10,7 +10,7 @@ import UIKit
 struct Currency {
     let symbol: String
     let rate: Double?
-    let name: String?
+    var name: String?
     
     var flag: String {
         switch symbol {

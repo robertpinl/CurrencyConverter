@@ -38,7 +38,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sa9-Ed-92Z">
                                                 <rect key="frame" x="0.0" y="0.0" width="184.5" height="80"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="27"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                                                 <state key="normal" title="Select">
                                                     <color key="titleColor" name="fontColor"/>
                                                 </state>
@@ -98,7 +98,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbD-aI-oal">
                                                 <rect key="frame" x="0.0" y="0.0" width="184.5" height="80"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="27"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                                                 <state key="normal" title="Select">
                                                     <color key="titleColor" name="fontColor"/>
                                                 </state>
@@ -344,7 +344,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt2-0D-3iU">
-                                                    <rect key="frame" x="347.5" y="19.5" width="26.5" height="26"/>
+                                                    <rect key="frame" x="367.5" y="19.5" width="26.5" height="26"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                                     <color key="textColor" name="fontColor"/>
                                                     <nil key="highlightedColor"/>
@@ -369,7 +369,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9Cf-nD-6Gz" firstAttribute="leading" secondItem="OJm-9A-s9M" secondAttribute="trailing" constant="8" symbolic="YES" id="A1e-rY-bvK"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Zt2-0D-3iU" secondAttribute="trailing" constant="20" id="C3o-f1-itW"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zt2-0D-3iU" secondAttribute="trailing" id="C3o-f1-itW"/>
                                                 <constraint firstItem="OJm-9A-s9M" firstAttribute="leading" secondItem="vxm-np-TRl" secondAttribute="leadingMargin" id="VwZ-Cz-D8f"/>
                                                 <constraint firstItem="9Cf-nD-6Gz" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="iGX-ao-hWs"/>
                                                 <constraint firstItem="OJm-9A-s9M" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="x9d-Ai-9rt"/>
@@ -590,7 +590,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XYz-RJ-lUh"/>
+        <segue reference="al0-Jf-kqc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left.arrow.right.circle" catalog="system" width="128" height="121"/>

@@ -52,55 +52,56 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         apiService.delegate = self
         
         apiService.getRates(url: K.ratesUrl) { (rates) in
-            
-            var fetchedArray = [Currency]()
-            
-            for (a,i) in rates.rates {
-                let newCurrency = Currency(symbol: a, rate: i, name: nil)
-                fetchedArray.append(newCurrency)
-            }
-            self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
-            
-            var indexOne: Int = 8
-            var indexTwo: Int = 31
-            
-            let defaultOne = self.defaults.string(forKey: "CurrencyOne")
-            let defaultTwo = self.defaults.string(forKey: "CurrencyTwo")
-            
-            if defaultOne != nil {
-                var currentIndexOne = 0
                 
-                for i in self.currencyArray
-                {
-                    if i.symbol == defaultOne {
-                        indexOne = currentIndexOne
-                        break
-                    }
-                    currentIndexOne += 1
-                }
-            }
-            
-            if defaultTwo != nil {
-                var currentIndexTwo = 0
+                var fetchedArray = [Currency]()
                 
-                for i in self.currencyArray
-                {
-                    if i.symbol == defaultTwo {
-                        indexTwo = currentIndexTwo
-                        break
-                    }
-                    currentIndexTwo += 1
+                for (a,i) in rates.rates {
+                    let newCurrency = Currency(symbol: a, rate: i, name: nil)
+                    fetchedArray.append(newCurrency)
                 }
-            }
-            
-            DispatchQueue.main.async { [self] in
-                if currencyArray.isEmpty == false {
+                
+                self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
+                
+                var indexOne: Int = 8
+                var indexTwo: Int = 31
+                
+                let defaultOne = self.defaults.string(forKey: "CurrencyOne")
+                let defaultTwo = self.defaults.string(forKey: "CurrencyTwo")
+                
+                if defaultOne != nil {
+                    var currentIndexOne = 0
                     
-                    firstCurrencyButton.setTitle("\(currencyArray[indexOne].flag)  \(currencyArray[indexOne].symbol)", for: .normal)
-                    firstCurrency = currencyArray[indexOne]
+                    for i in self.currencyArray
+                    {
+                        if i.symbol == defaultOne {
+                            indexOne = currentIndexOne
+                            break
+                        }
+                        currentIndexOne += 1
+                    }
+                }
+                
+                if defaultTwo != nil {
+                    var currentIndexTwo = 0
                     
-                    secondCurrencyButton.setTitle("\(currencyArray[indexTwo].flag)  \(currencyArray[indexTwo].symbol)", for: .normal)
-                    secondCurrency = currencyArray[indexTwo]
+                    for i in self.currencyArray
+                    {
+                        if i.symbol == defaultTwo {
+                            indexTwo = currentIndexTwo
+                            break
+                        }
+                        currentIndexTwo += 1
+                    }
+                }
+                
+                DispatchQueue.main.async { [self] in
+                    if currencyArray.isEmpty == false {
+                        
+                        firstCurrencyButton.setTitle("\(currencyArray[indexOne].flag)  \(currencyArray[indexOne].symbol)", for: .normal)
+                        firstCurrency = currencyArray[indexOne]
+                        
+                        secondCurrencyButton.setTitle("\(currencyArray[indexTwo].flag)  \(currencyArray[indexTwo].symbol)", for: .normal)
+                        secondCurrency = currencyArray[indexTwo]
                 }
             }
         }
