@@ -2,7 +2,7 @@
 //  CurrencySelectionTableVC.swift
 //  CurrencyConverter
 //
-//  Created by Robert P on 24.02.2021.
+//  Created by Robert Pinl on 24.02.2021.
 //
 
 import UIKit
@@ -25,23 +25,8 @@ class CurrencySelectionTableVC: UITableViewController {
         super.viewDidLoad()
         
         apiService.delegate = self
-        
-        apiService.getSymbols(url: K.symbolsUrl) { (symbol) in
-            
-            var fetchedArray = [Currency]()
-            
-            for (a,i) in symbol.symbols {
-                let newCurrency = Currency(symbol: a, rate: nil, name: i.description)
-                fetchedArray.append(newCurrency)
-            }
-            
-            self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
-            self.filteredData = self.currencyArray
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        self.filteredData = self.currencyArray
+        self.tableView.reloadData()
     }
     
     // MARK: - TableView Delegate and Data Source

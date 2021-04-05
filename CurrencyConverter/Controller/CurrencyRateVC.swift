@@ -2,7 +2,7 @@
 //  CurrencyRateVC.swift
 //  CurrencyConverter
 //
-//  Created by Robert P on 11.01.2021.
+//  Created by Robert Pinl on 11.01.2021.
 //
 
 import UIKit
@@ -45,14 +45,14 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
                 
                 var fetchedArray = [Currency]()
                 
-                for (a,i) in rates.rates {
-                    let newCurrency = Currency(symbol: a, rate: i, name: nil)
+                for (symbol, rate) in rates.rates {
+                    let newCurrency = Currency(symbol: symbol, rate: rate, name: nil)
                     fetchedArray.append(newCurrency)
                 }
                 
-                for o in symbol.symbols {
-                    if let index = fetchedArray.firstIndex(where: { $0.symbol == o.key }) {
-                        fetchedArray[index].name = o.value.description
+                for name in symbol.symbols {
+                    if let index = fetchedArray.firstIndex(where: { $0.symbol == name.key }) {
+                        fetchedArray[index].name = name.value.description
                     }
                 }
                 

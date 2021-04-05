@@ -39,7 +39,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sa9-Ed-92Z">
                                                 <rect key="frame" x="0.0" y="0.0" width="184.5" height="80"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                                <state key="normal" title="Select">
+                                                <state key="normal" title="-">
                                                     <color key="titleColor" name="fontColor"/>
                                                 </state>
                                                 <connections>
@@ -99,7 +99,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbD-aI-oal">
                                                 <rect key="frame" x="0.0" y="0.0" width="184.5" height="80"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                                <state key="normal" title="Select">
+                                                <state key="normal" title="-">
                                                     <color key="titleColor" name="fontColor"/>
                                                 </state>
                                                 <connections>
@@ -140,13 +140,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT3-IY-luS">
-                                <rect key="frame" x="186" y="726" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jZi-Ig-qef"/>
                         <color key="backgroundColor" name="backgroundColor"/>
@@ -217,7 +210,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FPA-zx-Ozf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="backgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="WF4-dQ-L0s">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,24 +223,26 @@
                                     </constraints>
                                 </imageView>
                                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-GJ-i3e">
-                                    <rect key="frame" x="12" y="69" width="390" height="44"/>
+                                    <rect key="frame" x="15" y="69" width="384" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="Hpz-kx-N7N"/>
                                     </constraints>
+                                    <color key="tintColor" name="fontColor"/>
+                                    <color key="barTintColor" name="fontColor"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="liB-dV-1KJ" id="0vS-If-kpV"/>
                                     </connections>
                                 </searchBar>
                             </subviews>
-                            <color key="backgroundColor" name="backgroundColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="6Qx-GJ-i3e" firstAttribute="top" secondItem="gJc-5f-wq6" secondAttribute="bottom" constant="16" id="0g0-yQ-ms4"/>
-                                <constraint firstItem="6Qx-GJ-i3e" firstAttribute="leading" secondItem="WF4-dQ-L0s" secondAttribute="leading" constant="12" id="1Gl-z0-etJ"/>
+                                <constraint firstItem="6Qx-GJ-i3e" firstAttribute="leading" secondItem="WF4-dQ-L0s" secondAttribute="leading" constant="15" id="1Gl-z0-etJ"/>
                                 <constraint firstAttribute="bottom" secondItem="6Qx-GJ-i3e" secondAttribute="bottom" id="L8n-mY-GlK"/>
                                 <constraint firstItem="gJc-5f-wq6" firstAttribute="top" secondItem="WF4-dQ-L0s" secondAttribute="top" constant="16" id="VXg-ib-dJ8"/>
-                                <constraint firstAttribute="trailing" secondItem="6Qx-GJ-i3e" secondAttribute="trailing" constant="12" id="VaU-O7-fUI"/>
+                                <constraint firstAttribute="trailing" secondItem="6Qx-GJ-i3e" secondAttribute="trailing" constant="15" id="VaU-O7-fUI"/>
                                 <constraint firstItem="gJc-5f-wq6" firstAttribute="leading" secondItem="WF4-dQ-L0s" secondAttribute="leading" constant="20" id="rAn-fI-MUi"/>
                             </constraints>
                             <connections>
@@ -290,7 +285,7 @@
                                         <constraint firstItem="3Au-R7-OU6" firstAttribute="leading" secondItem="gpx-5O-iDM" secondAttribute="leadingMargin" id="ggR-1N-EpL"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="backgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="tintColor" name="fontColor"/>
                                 <connections>
                                     <outlet property="codeLabel" destination="ceG-53-Ar7" id="W6l-ZJ-yYN"/>
@@ -352,13 +347,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-3" translatesAutoresizingMaskIntoConstraints="NO" id="9Cf-nD-6Gz">
                                                     <rect key="frame" x="63" y="11.5" width="125" height="42.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-Gp-4Hp">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-Gp-4Hp">
                                                             <rect key="frame" x="0.0" y="0.0" width="125" height="26"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                                             <color key="textColor" name="fontColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States Dollar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-bu-loE">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="United States Dollar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-bu-loE">
                                                             <rect key="frame" x="0.0" y="23" width="125" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -398,6 +393,8 @@
                             </label>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="LfG-u9-uMD">
                                 <rect key="frame" x="15" y="126.5" width="384" height="56"/>
+                                <color key="tintColor" name="fontColor"/>
+                                <color key="barTintColor" name="fontColor"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="Nr4-W6-M8P" id="a6H-60-SMg"/>

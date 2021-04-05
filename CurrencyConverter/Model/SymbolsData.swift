@@ -2,7 +2,7 @@
 //  SymbolsData.swift
 //  CurrencyConverter
 //
-//  Created by Robert P on 04.04.2021.
+//  Created by Robert Pinl on 04.04.2021.
 //
 
 import Foundation

@@ -19,7 +19,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     var firstOrSecond: Bool?
     
     let defaults = UserDefaults.standard
-    
+        
     var ecbRateDiff: Double = 0.0 {
         didSet {
             self.firstCurrencyTextField.text = ""
@@ -52,18 +52,25 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         apiService.delegate = self
         
         apiService.getRates(url: K.ratesUrl) { (rates) in
+            self.apiService.getSymbols(url: K.symbolsUrl) { (symbol) in
                 
                 var fetchedArray = [Currency]()
                 
-                for (a,i) in rates.rates {
-                    let newCurrency = Currency(symbol: a, rate: i, name: nil)
+                for (symbol ,rate) in rates.rates {
+                    let newCurrency = Currency(symbol: symbol, rate: rate, name: nil)
                     fetchedArray.append(newCurrency)
+                }
+                
+                for name in symbol.symbols {
+                    if let index = fetchedArray.firstIndex(where: { $0.symbol == name.key }) {
+                        fetchedArray[index].name = name.value.description
+                    }
                 }
                 
                 self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
                 
-                var indexOne: Int = 8
-                var indexTwo: Int = 31
+                var indexOne: Int = 46
+                var indexTwo: Int = 150
                 
                 let defaultOne = self.defaults.string(forKey: "CurrencyOne")
                 let defaultTwo = self.defaults.string(forKey: "CurrencyTwo")
@@ -106,6 +113,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    }
     
     //MARK: - Currency Selection
     @IBAction func firstCurrencyPressed(_ sender: UIButton) {
@@ -122,6 +130,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         if segue.identifier == "GoToCurrencySelection" {
             let destination = segue.destination as? CurrencySelectionTableVC
             destination?.delegate = self
+            destination?.currencyArray = self.currencyArray
         }
     }
     
