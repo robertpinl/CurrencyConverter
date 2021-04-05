@@ -323,30 +323,59 @@
                                 <rect key="frame" x="0.0" y="182.5" width="414" height="630.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="rateCell" textLabel="3kU-ha-UAv" detailTextLabel="8lA-BM-ER4" style="IBUITableViewCellStyleValue1" id="pDF-ef-HlJ">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="rateCell" rowHeight="65" id="pDF-ef-HlJ" customClass="CurrencyRateTableViewCell" customModule="CurrencyConverter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pDF-ef-HlJ" id="vxm-np-TRl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3kU-ha-UAv">
-                                                    <rect key="frame" x="20" y="12" width="33" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇹🇹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJm-9A-s9M">
+                                                    <rect key="frame" x="20" y="17.5" width="28" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8lA-BM-ER4">
-                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt2-0D-3iU">
+                                                    <rect key="frame" x="347.5" y="19.5" width="26.5" height="26"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                                    <color key="textColor" name="fontColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-3" translatesAutoresizingMaskIntoConstraints="NO" id="9Cf-nD-6Gz">
+                                                    <rect key="frame" x="56" y="11.5" width="125" height="42.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-Gp-4Hp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="26"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                                            <color key="textColor" name="fontColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States Dollar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-bu-loE">
+                                                            <rect key="frame" x="0.0" y="23" width="125" height="19.5"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9Cf-nD-6Gz" firstAttribute="leading" secondItem="OJm-9A-s9M" secondAttribute="trailing" constant="8" symbolic="YES" id="A1e-rY-bvK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zt2-0D-3iU" secondAttribute="trailing" constant="20" id="C3o-f1-itW"/>
+                                                <constraint firstItem="OJm-9A-s9M" firstAttribute="leading" secondItem="vxm-np-TRl" secondAttribute="leadingMargin" id="VwZ-Cz-D8f"/>
+                                                <constraint firstItem="9Cf-nD-6Gz" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="iGX-ao-hWs"/>
+                                                <constraint firstItem="OJm-9A-s9M" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="x9d-Ai-9rt"/>
+                                                <constraint firstItem="Zt2-0D-3iU" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="zyQ-f7-qG7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="fontColor"/>
+                                        <connections>
+                                            <outlet property="flagLabel" destination="OJm-9A-s9M" id="vbY-EF-cV7"/>
+                                            <outlet property="nameLabel" destination="DFY-bu-loE" id="eL9-Ib-ZAJ"/>
+                                            <outlet property="rateLabel" destination="Zt2-0D-3iU" id="8Fy-N8-gdy"/>
+                                            <outlet property="symbolLabel" destination="Yaa-Gp-4Hp" id="tHY-xg-zIN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
