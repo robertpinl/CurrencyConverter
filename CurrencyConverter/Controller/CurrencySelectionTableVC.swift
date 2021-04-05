@@ -20,19 +20,19 @@ class CurrencySelectionTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         apiService.delegate = self
         
-        apiService.getCurrency { (rates) in
+        apiService.getSymbols(url: K.symbolsUrl) { (symbol) in
             
             var fetchedArray = [Currency]()
             
-            for (a,i) in rates.rates {
-                let newCurrency = Currency(name: a, rate: i)
+            for (a,i) in symbol.symbols {
+                let newCurrency = Currency(symbol: a, rate: nil, name: i.description)
                 fetchedArray.append(newCurrency)
             }
-            fetchedArray.append(Currency(name: "EUR", rate: 1.0))
-            self.currencyArray = fetchedArray.sorted { $0.name < $1.name }
+            
+            self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -46,10 +46,12 @@ class CurrencySelectionTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath)
-        cell.textLabel?.text = "  \(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].name)"
-        cell.textLabel?.font = UIFont(name: "Avenir", size: 19)
-        cell.textLabel?.textColor = UIColor(named: "fontColor")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath) as! CurrencySelectionTableViewCell
+        let currency = currencyArray[indexPath.row]
+        cell.flagLabel.text = currency.flag
+        cell.descriptionLabel.text = currency.name
+        cell.codeLabel.text = currency.symbol
+        
         return cell
     }
     
@@ -59,7 +61,7 @@ class CurrencySelectionTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        return 65
     }
     
     //Dismiss without selection
@@ -73,6 +75,7 @@ extension CurrencySelectionTableVC: RatesManagerDelegate {
     func didFailWithError(error: Error) {
         DispatchQueue.main.async {
             self.showAlertMessage(title: "Connection Error", message: error.localizedDescription)
+            print(error)
         }
     }
 }

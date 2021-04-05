@@ -24,6 +24,10 @@
 		22733D3F2607524900C896CF /* SettingBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22733D3E2607524900C896CF /* SettingBackgroundView.swift */; };
 		22733D422607583600C896CF /* ValidateDouble+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22733D412607583600C896CF /* ValidateDouble+Extension.swift */; };
 		22F78E3425E6C46B0038F700 /* CurrencySelectionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */; };
+		D40DE6A726186EC300CB41EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40DE6A626186EC300CB41EF /* Constants.swift */; };
+		D40DE6B32618724E00CB41EF /* CurrencySelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40DE6B22618724E00CB41EF /* CurrencySelectionTableViewCell.swift */; };
+		D452086E261AF29D00D68422 /* CurrencyRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D452086D261AF29D00D68422 /* CurrencyRatesTableViewCell.swift */; };
+		D45F7ADB2619B1F800633487 /* SymbolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F7ADA2619B1F800633487 /* SymbolsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		22733D3E2607524900C896CF /* SettingBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBackgroundView.swift; sourceTree = "<group>"; };
 		22733D412607583600C896CF /* ValidateDouble+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidateDouble+Extension.swift"; sourceTree = "<group>"; };
 		22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableVC.swift; sourceTree = "<group>"; };
+		D40DE6A626186EC300CB41EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D40DE6B22618724E00CB41EF /* CurrencySelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableViewCell.swift; sourceTree = "<group>"; };
+		D452086D261AF29D00D68422 /* CurrencyRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRatesTableViewCell.swift; sourceTree = "<group>"; };
+		D45F7ADA2619B1F800633487 /* SymbolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,7 @@
 				22730DA125A9A4FB005F12BC /* Assets.xcassets */,
 				22730DA325A9A4FB005F12BC /* LaunchScreen.storyboard */,
 				22730DA625A9A4FB005F12BC /* Info.plist */,
+				D40DE6A626186EC300CB41EF /* Constants.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -118,6 +127,8 @@
 				223018F526060F4F0023F890 /* ConverterBackgroundView.swift */,
 				223018F8260610F00023F890 /* SplitLineView.swift */,
 				22733D3E2607524900C896CF /* SettingBackgroundView.swift */,
+				D452086D261AF29D00D68422 /* CurrencyRatesTableViewCell.swift */,
+				D40DE6B22618724E00CB41EF /* CurrencySelectionTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,6 +138,7 @@
 			children = (
 				22730DB425A9B34B005F12BC /* RatesApiManager.swift */,
 				22730DB125A9B33B005F12BC /* RatesData.swift */,
+				D45F7ADA2619B1F800633487 /* SymbolsData.swift */,
 				2235DE4C2604A3AA0096C481 /* Currency.swift */,
 			);
 			path = Model;
@@ -205,14 +217,18 @@
 				223018F9260610F00023F890 /* SplitLineView.swift in Sources */,
 				22730DB225A9B33B005F12BC /* RatesData.swift in Sources */,
 				22733D3C26074B3B00C896CF /* SettingsVC.swift in Sources */,
+				D40DE6B32618724E00CB41EF /* CurrencySelectionTableViewCell.swift in Sources */,
 				2269832125AC93E1004D1B1E /* CurrencyRateVC.swift in Sources */,
 				22436E352608855600D61874 /* Alert+Extension.swift in Sources */,
 				22733D422607583600C896CF /* ValidateDouble+Extension.swift in Sources */,
+				D40DE6A726186EC300CB41EF /* Constants.swift in Sources */,
 				22730D9D25A9A4F7005F12BC /* CurrencyConverterVC.swift in Sources */,
 				22F78E3425E6C46B0038F700 /* CurrencySelectionTableVC.swift in Sources */,
 				22730DB525A9B34B005F12BC /* RatesApiManager.swift in Sources */,
 				22733D3F2607524900C896CF /* SettingBackgroundView.swift in Sources */,
 				2235DE4D2604A3AA0096C481 /* Currency.swift in Sources */,
+				D45F7ADB2619B1F800633487 /* SymbolsData.swift in Sources */,
+				D452086E261AF29D00D68422 /* CurrencyRatesTableViewCell.swift in Sources */,
 				22730D9925A9A4F7005F12BC /* AppDelegate.swift in Sources */,
 				22730D9B25A9A4F7005F12BC /* SceneDelegate.swift in Sources */,
 				223018F626060F4F0023F890 /* ConverterBackgroundView.swift in Sources */,
@@ -292,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -347,7 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -366,12 +382,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24UHT2AGTS;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertpinl.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -390,12 +406,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24UHT2AGTS;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertpinl.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;

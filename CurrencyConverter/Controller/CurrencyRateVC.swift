@@ -27,7 +27,8 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }()
     
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         ecbRateDiff = defaults.double(forKey: "ecbDiff")
@@ -40,15 +41,15 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         apiService.delegate = self
         
-        apiService.getCurrency { (rates) in
+        apiService.getRates(url: K.ratesUrl) { (rates) in
             
             var fetchedArray = [Currency]()
             
             for (a,i) in rates.rates {
-                let newCurrency = Currency(name: a, rate: i)
+                let newCurrency = Currency(symbol: a, rate: i, name: nil)
                 fetchedArray.append(newCurrency)
             }
-            self.currencyArray = fetchedArray.sorted { $0.name < $1.name }
+            self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -64,8 +65,8 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rateCell", for: indexPath)
-        cell.textLabel?.text = "  \(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].name)"
-        cell.detailTextLabel?.text = formatter.string(from: NSNumber(value: currencyArray[indexPath.row].rate + (currencyArray[indexPath.row].rate * self.ecbRateDiff / 100)))
+        cell.textLabel?.text = "  \(currencyArray[indexPath.row].flag)  \(currencyArray[indexPath.row].symbol)"
+        cell.detailTextLabel?.text = formatter.string(from: NSNumber(value: currencyArray[indexPath.row].rate ?? 0.0 + (currencyArray[indexPath.row].rate ?? 0.0 * self.ecbRateDiff / 100)))
         cell.textLabel?.font = UIFont(name: "Avenir", size: 19)
         cell.textLabel?.textColor = UIColor(named: "fontColor")
         cell.detailTextLabel?.font = UIFont(name: "Avenir-Medium", size: 19)
@@ -76,6 +77,10 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
+}
+
+extension CurrencyRateVC: UISearchBarDelegate {
+    
 }
 
 //MARK: - Error handling

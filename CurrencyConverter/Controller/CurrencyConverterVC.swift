@@ -51,16 +51,15 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         
         apiService.delegate = self
         
-        apiService.getCurrency { (rates) in
+        apiService.getRates(url: K.ratesUrl) { (rates) in
             
             var fetchedArray = [Currency]()
             
             for (a,i) in rates.rates {
-                let newCurrency = Currency(name: a, rate: i)
+                let newCurrency = Currency(symbol: a, rate: i, name: nil)
                 fetchedArray.append(newCurrency)
             }
-            fetchedArray.append(Currency(name: "EUR", rate: 1.0))
-            self.currencyArray = fetchedArray.sorted { $0.name < $1.name }
+            self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
             
             var indexOne: Int = 8
             var indexTwo: Int = 31
@@ -73,7 +72,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
                 
                 for i in self.currencyArray
                 {
-                    if i.name == defaultOne {
+                    if i.symbol == defaultOne {
                         indexOne = currentIndexOne
                         break
                     }
@@ -86,7 +85,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
                 
                 for i in self.currencyArray
                 {
-                    if i.name == defaultTwo {
+                    if i.symbol == defaultTwo {
                         indexTwo = currentIndexTwo
                         break
                     }
@@ -97,10 +96,10 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async { [self] in
                 if currencyArray.isEmpty == false {
                     
-                    firstCurrencyButton.setTitle("\(currencyArray[indexOne].flag)  \(currencyArray[indexOne].name)", for: .normal)
+                    firstCurrencyButton.setTitle("\(currencyArray[indexOne].flag)  \(currencyArray[indexOne].symbol)", for: .normal)
                     firstCurrency = currencyArray[indexOne]
                     
-                    secondCurrencyButton.setTitle("\(currencyArray[indexTwo].flag)  \(currencyArray[indexTwo].name)", for: .normal)
+                    secondCurrencyButton.setTitle("\(currencyArray[indexTwo].flag)  \(currencyArray[indexTwo].symbol)", for: .normal)
                     secondCurrency = currencyArray[indexTwo]
                 }
             }
@@ -132,7 +131,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
             let firstCurrencyValue = firstCurrencyTextField.text!.replacingOccurrences(of: ",", with: ".")
             guard let input = Double(firstCurrencyValue) else { secondCurrencyLabel.text = ""; return }
             
-            let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate
+            let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate!
             if value > 0 {
                 secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value + (value * self.ecbRateDiff / 100)))
             }
@@ -180,13 +179,13 @@ extension CurrencyConverterVC: CurrencySelectionDelegate {
         
         if firstOrSecond! {
             firstCurrency = currency
-            firstCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
-            defaults.set(currency.name, forKey: "CurrencyOne")
+            firstCurrencyButton.setTitle("\(currency.flag)  \(currency.symbol)", for: .normal)
+            defaults.set(currency.symbol, forKey: "CurrencyOne")
             
         } else {
             secondCurrency = currency
-            secondCurrencyButton.setTitle("\(currency.flag)  \(currency.name)", for: .normal)
-            defaults.set(currency.name, forKey: "CurrencyTwo")
+            secondCurrencyButton.setTitle("\(currency.flag)  \(currency.symbol)", for: .normal)
+            defaults.set(currency.symbol, forKey: "CurrencyTwo")
             
         }
     }
