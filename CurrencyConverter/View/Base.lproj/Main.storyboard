@@ -282,6 +282,7 @@
                                         <constraint firstItem="hch-1Z-DAG" firstAttribute="leading" secondItem="3Au-R7-OU6" secondAttribute="trailing" constant="8" symbolic="YES" id="EMo-ea-5l4"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ceG-53-Ar7" secondAttribute="trailing" constant="8" id="LPl-Zs-WxZ"/>
                                         <constraint firstItem="ceG-53-Ar7" firstAttribute="centerY" secondItem="gpx-5O-iDM" secondAttribute="centerY" id="Ozb-0x-SVk"/>
+                                        <constraint firstItem="ceG-53-Ar7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hch-1Z-DAG" secondAttribute="trailing" constant="5" id="ckO-vZ-1CN"/>
                                         <constraint firstItem="3Au-R7-OU6" firstAttribute="leading" secondItem="gpx-5O-iDM" secondAttribute="leadingMargin" id="ggR-1N-EpL"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -333,8 +334,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇹🇹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJm-9A-s9M">
-                                                    <rect key="frame" x="20" y="14" width="35" height="37"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <rect key="frame" x="20" y="13.5" width="31" height="32.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -345,17 +346,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-3" translatesAutoresizingMaskIntoConstraints="NO" id="9Cf-nD-6Gz">
-                                                    <rect key="frame" x="63" y="11.5" width="125" height="42.5"/>
+                                                    <rect key="frame" x="59" y="11" width="134" height="43.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-Gp-4Hp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="26"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-Gp-4Hp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="134" height="26"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                                             <color key="textColor" name="fontColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="United States Dollar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-bu-loE">
-                                                            <rect key="frame" x="0.0" y="23" width="125" height="19.5"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                            <rect key="frame" x="0.0" y="23" width="134" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -365,18 +366,19 @@
                                             <constraints>
                                                 <constraint firstItem="9Cf-nD-6Gz" firstAttribute="leading" secondItem="OJm-9A-s9M" secondAttribute="trailing" constant="8" symbolic="YES" id="A1e-rY-bvK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Zt2-0D-3iU" secondAttribute="trailing" id="C3o-f1-itW"/>
+                                                <constraint firstItem="Zt2-0D-3iU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Cf-nD-6Gz" secondAttribute="trailing" constant="5" id="LHD-co-zVm"/>
                                                 <constraint firstItem="OJm-9A-s9M" firstAttribute="leading" secondItem="vxm-np-TRl" secondAttribute="leadingMargin" id="VwZ-Cz-D8f"/>
                                                 <constraint firstItem="9Cf-nD-6Gz" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="iGX-ao-hWs"/>
-                                                <constraint firstItem="OJm-9A-s9M" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="x9d-Ai-9rt"/>
+                                                <constraint firstItem="OJm-9A-s9M" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" constant="-3" id="x9d-Ai-9rt"/>
                                                 <constraint firstItem="Zt2-0D-3iU" firstAttribute="centerY" secondItem="vxm-np-TRl" secondAttribute="centerY" id="zyQ-f7-qG7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="fontColor"/>
                                         <connections>
-                                            <outlet property="flagLabel" destination="OJm-9A-s9M" id="vbY-EF-cV7"/>
-                                            <outlet property="nameLabel" destination="DFY-bu-loE" id="eL9-Ib-ZAJ"/>
-                                            <outlet property="rateLabel" destination="Zt2-0D-3iU" id="8Fy-N8-gdy"/>
-                                            <outlet property="symbolLabel" destination="Yaa-Gp-4Hp" id="tHY-xg-zIN"/>
+                                            <outlet property="flagLabel" destination="OJm-9A-s9M" id="14x-sE-nVf"/>
+                                            <outlet property="nameLabel" destination="Yaa-Gp-4Hp" id="Csq-lL-cZD"/>
+                                            <outlet property="rateLabel" destination="Zt2-0D-3iU" id="QJw-EE-KaP"/>
+                                            <outlet property="symbolLabel" destination="DFY-bu-loE" id="gmr-Dh-m0H"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

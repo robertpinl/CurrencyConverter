@@ -74,9 +74,10 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rateCell", for: indexPath) as! CurrencyRateTableViewCell
-        cell.flagLabel.text = filteredData[indexPath.row].flag
-        cell.symbolLabel.text = filteredData[indexPath.row].symbol
-        cell.nameLabel.text = filteredData[indexPath.row].name
+        let currency = filteredData[indexPath.row]
+        cell.flagLabel.text = currency.flag
+        cell.nameLabel.text = currency.name
+        cell.symbolLabel.text = currency.symbol
         cell.rateLabel.text = formatter.string(from: NSNumber(value: filteredData[indexPath.row].rate ?? 0.0 + (filteredData[indexPath.row].rate ?? 0.0 * (self.ecbRateDiff / 100))))
         return cell
     }
