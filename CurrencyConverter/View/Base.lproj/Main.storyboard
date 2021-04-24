@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -85,10 +86,10 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBY-bB-7uz" customClass="ConverterBackgroundView" customModule="CurrencyConverter" customModuleProvider="target">
-                                <rect key="frame" x="20" y="241.33333333333337" width="350" height="80"/>
+                                <rect key="frame" x="20" y="266.33333333333331" width="350" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSH-e7-YaE" customClass="SplitLineView" customModule="CurrencyConverter" customModuleProvider="target">
-                                        <rect key="frame" x="174.66666666666666" y="14.999999999999972" width="1" height="50"/>
+                                        <rect key="frame" x="174.66666666666666" y="15" width="1" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="smK-g5-LxH"/>
@@ -141,6 +142,20 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sg-LN-Xgx">
+                                <rect key="frame" x="177.66666666666666" y="226.33333333333334" width="35" height="35.000000000000028"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="6aN-hF-zy6"/>
+                                    <constraint firstAttribute="height" constant="35" id="bMJ-hH-8qV"/>
+                                </constraints>
+                                <color key="tintColor" name="brandBlue"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.up.arrow.down" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchCurrenciesPressed:" destination="d0X-oq-pvQ" eventType="touchUpInside" id="2RJ-IE-7XR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jZi-Ig-qef"/>
                         <color key="backgroundColor" name="backgroundColor"/>
@@ -152,12 +167,14 @@
                             <constraint firstItem="UBY-bB-7uz" firstAttribute="top" secondItem="Kbh-LF-gNJ" secondAttribute="bottom" constant="50" id="DBh-ki-Qtv"/>
                             <constraint firstItem="jZi-Ig-qef" firstAttribute="trailing" secondItem="UBY-bB-7uz" secondAttribute="trailing" constant="20" id="DSn-Uc-dB8"/>
                             <constraint firstItem="UBY-bB-7uz" firstAttribute="centerX" secondItem="tQa-NY-MfX" secondAttribute="centerX" id="F7J-hb-0GI"/>
+                            <constraint firstItem="7Sg-LN-Xgx" firstAttribute="top" secondItem="Kbh-LF-gNJ" secondAttribute="bottom" constant="5" id="FNx-Fe-R0B"/>
                             <constraint firstItem="Kbh-LF-gNJ" firstAttribute="leading" secondItem="jZi-Ig-qef" secondAttribute="leading" constant="20" id="LSK-1j-pjs"/>
                             <constraint firstItem="lv9-ue-6BA" firstAttribute="centerX" secondItem="tQa-NY-MfX" secondAttribute="centerX" id="NfA-Rl-agK"/>
                             <constraint firstItem="Kbh-LF-gNJ" firstAttribute="top" secondItem="lv9-ue-6BA" secondAttribute="bottom" constant="50" id="Unq-1h-Ncu"/>
                             <constraint firstItem="Kbh-LF-gNJ" firstAttribute="centerX" secondItem="tQa-NY-MfX" secondAttribute="centerX" id="W18-Tq-fxx"/>
-                            <constraint firstItem="UBY-bB-7uz" firstAttribute="top" secondItem="Kbh-LF-gNJ" secondAttribute="bottom" constant="20" id="dn4-kK-3t1"/>
+                            <constraint firstItem="UBY-bB-7uz" firstAttribute="top" secondItem="7Sg-LN-Xgx" secondAttribute="bottom" constant="5" id="fel-YT-Mky"/>
                             <constraint firstItem="Kbh-LF-gNJ" firstAttribute="top" secondItem="lv9-ue-6BA" secondAttribute="bottom" constant="70" id="rC9-JA-vdw"/>
+                            <constraint firstItem="7Sg-LN-Xgx" firstAttribute="centerX" secondItem="tQa-NY-MfX" secondAttribute="centerX" id="tCd-31-u3M"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -178,7 +195,6 @@
                                 <exclude reference="37N-o8-uAn"/>
                                 <include reference="DBh-ki-Qtv"/>
                                 <include reference="F7J-hb-0GI"/>
-                                <exclude reference="dn4-kK-3t1"/>
                             </mask>
                         </variation>
                         <connections>
@@ -610,6 +626,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left.arrow.right.circle" catalog="system" width="128" height="121"/>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
         <image name="chevron.left.circle" catalog="system" width="128" height="121"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>

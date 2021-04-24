@@ -115,6 +115,26 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Switch currencies
+    @IBAction func switchCurrenciesPressed(_ sender: UIButton) {
+        guard let first = firstCurrency, let second = secondCurrency else { return }
+        
+        firstCurrency = second
+        secondCurrency = first
+        
+        if let firstCurrency = firstCurrency {
+            firstCurrencyButton.setTitle("\(String(describing: firstCurrency.flag))  \(firstCurrency.symbol)", for: .normal)
+            firstCurrencyTextField.text = ""
+            secondCurrencyLabel.text = ""
+        }
+        
+        if let secondCurrency = secondCurrency {
+            secondCurrencyButton.setTitle("\(String(describing: secondCurrency.flag))  \(secondCurrency.symbol)", for: .normal)
+            
+        }
+    }
+    
+    
     //MARK: - Currency Selection
     @IBAction func firstCurrencyPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToCurrencySelection", sender: self)
