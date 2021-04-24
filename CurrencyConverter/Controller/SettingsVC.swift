@@ -27,15 +27,15 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
                 
         ecbRateDiff = defaults.double(forKey: "ecbDiff")
-        
         ecbDiffTextField.text = formatter.string(from: NSNumber(value: ecbRateDiff))
+        
         if (defaults.string(forKey: "defaultRate") != nil) {
         defaultCurrencyButton.setTitle(defaults.string(forKey: "defaultRate"), for: .normal)
         } else {
             defaultCurrencyButton.setTitle(CurrencyStore.shared.currencies[46].symbol, for: .normal)
         }
-        
     }
+    
     @IBAction func ecbDiffChanged(_ sender: UITextField) {
         let value = sender.text!.replacingOccurrences(of: ",", with: ".")
         guard let doubleValue = Double(value) else { return }

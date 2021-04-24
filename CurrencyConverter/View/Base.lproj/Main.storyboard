@@ -150,7 +150,7 @@
                                 </constraints>
                                 <color key="tintColor" name="brandBlue"/>
                                 <state key="normal">
-                                    <imageReference key="image" image="arrow.up.arrow.down" catalog="system" symbolScale="large"/>
+                                    <imageReference key="image" image="arrow.up.arrow.down" catalog="system" symbolScale="medium"/>
                                 </state>
                                 <connections>
                                     <action selector="switchCurrenciesPressed:" destination="d0X-oq-pvQ" eventType="touchUpInside" id="2RJ-IE-7XR"/>
@@ -225,7 +225,7 @@
             <objects>
                 <tableViewController id="liB-dV-1KJ" customClass="CurrencySelectionTableVC" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FPA-zx-Ozf">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="WF4-dQ-L0s">
@@ -404,8 +404,8 @@
                                     <outlet property="delegate" destination="Nr4-W6-M8P" id="FVi-ik-U2g"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EURO RATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPo-Wu-yJv">
-                                <rect key="frame" x="138.66666666666666" y="64" width="113" height="27.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR RATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPo-Wu-yJv">
+                                <rect key="frame" x="147" y="64" width="96.333333333333314" height="27.333333333333329"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                 <color key="textColor" name="brandBlue"/>
                                 <nil key="highlightedColor"/>
@@ -504,7 +504,7 @@
                                                         <rect key="frame" x="225" y="0.0" width="100" height="55"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Lj-mT-tWU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="66" height="55"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="55"/>
                                                                 <color key="textColor" name="fontColor"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -514,9 +514,9 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLL-6a-9kf">
-                                                                <rect key="frame" x="70" y="0.0" width="30" height="55"/>
+                                                                <rect key="frame" x="76" y="0.0" width="24" height="55"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="30" id="VES-u4-ilF"/>
+                                                                    <constraint firstAttribute="width" constant="24" id="VES-u4-ilF"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                 <color key="textColor" name="fontColor"/>

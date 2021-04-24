@@ -125,12 +125,11 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         if let firstCurrency = firstCurrency {
             firstCurrencyButton.setTitle("\(String(describing: firstCurrency.flag))  \(firstCurrency.symbol)", for: .normal)
             firstCurrencyTextField.text = ""
-            secondCurrencyLabel.text = ""
         }
         
         if let secondCurrency = secondCurrency {
             secondCurrencyButton.setTitle("\(String(describing: secondCurrency.flag))  \(secondCurrency.symbol)", for: .normal)
-            
+            secondCurrencyLabel.text = ""
         }
     }
     
