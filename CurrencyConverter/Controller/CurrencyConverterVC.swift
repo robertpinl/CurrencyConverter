@@ -19,7 +19,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     var firstOrSecond: Bool?
     
     let defaults = UserDefaults.standard
-        
+    
     var ecbRateDiff: Double = 0.0 {
         didSet {
             self.firstCurrencyTextField.text = ""
@@ -41,14 +41,13 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var secondCurrencyLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         ecbRateDiff = defaults.double(forKey: "ecbDiff")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ecbRateDiff = defaults.double(forKey: "ecbDiff")
-        
+                
         apiService.delegate = self
         
         apiService.getRates(url: K.ratesUrl) { (rates) in
@@ -68,6 +67,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
                 }
                 
                 self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
+                CurrencyStore.shared.currencies = self.currencyArray
                 
                 var indexOne: Int = 46
                 var indexTwo: Int = 150
@@ -102,17 +102,17 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
                 }
                 
                 DispatchQueue.main.async { [self] in
-                    if currencyArray.isEmpty == false {
+                    if !currencyArray.isEmpty {
                         
-                        firstCurrencyButton.setTitle("\(currencyArray[indexOne].flag)  \(currencyArray[indexOne].symbol)", for: .normal)
+                        firstCurrencyButton.setTitle("\(String(describing: currencyArray[indexOne].flag))  \(currencyArray[indexOne].symbol)", for: .normal)
                         firstCurrency = currencyArray[indexOne]
                         
-                        secondCurrencyButton.setTitle("\(currencyArray[indexTwo].flag)  \(currencyArray[indexTwo].symbol)", for: .normal)
+                        secondCurrencyButton.setTitle("\(String(describing: currencyArray[indexTwo].flag))  \(currencyArray[indexTwo].symbol)", for: .normal)
                         secondCurrency = currencyArray[indexTwo]
+                    }
                 }
             }
         }
-    }
     }
     
     //MARK: - Currency Selection
@@ -189,12 +189,12 @@ extension CurrencyConverterVC: CurrencySelectionDelegate {
         
         if firstOrSecond! {
             firstCurrency = currency
-            firstCurrencyButton.setTitle("\(currency.flag)  \(currency.symbol)", for: .normal)
+            firstCurrencyButton.setTitle("\(String(describing: currency.flag))  \(currency.symbol)", for: .normal)
             defaults.set(currency.symbol, forKey: "CurrencyOne")
             
         } else {
             secondCurrency = currency
-            secondCurrencyButton.setTitle("\(currency.flag)  \(currency.symbol)", for: .normal)
+            secondCurrencyButton.setTitle("\(String(describing: currency.flag))  \(currency.symbol)", for: .normal)
             defaults.set(currency.symbol, forKey: "CurrencyTwo")
             
         }

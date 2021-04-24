@@ -12,6 +12,8 @@ protocol RatesManagerDelegate {
 
 struct  RatesApiManager {
     
+    static let shared = RatesApiManager()
+    
     var delegate: RatesManagerDelegate?
         
     func getRates(url: URL?, completion: @escaping (RatesData) -> Void) {
@@ -26,7 +28,9 @@ struct  RatesApiManager {
                     let decoder = JSONDecoder()
                     do {
                         let rates = try decoder.decode(RatesData.self, from: safeData)
+                        DispatchQueue.main.async {
                             completion(rates)
+                        }
                     } catch {
                         self.delegate?.didFailWithError(error: error)
                     }

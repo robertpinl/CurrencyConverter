@@ -26,6 +26,7 @@
 		22F78E3425E6C46B0038F700 /* CurrencySelectionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */; };
 		D40DE6A726186EC300CB41EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40DE6A626186EC300CB41EF /* Constants.swift */; };
 		D40DE6B32618724E00CB41EF /* CurrencySelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40DE6B22618724E00CB41EF /* CurrencySelectionTableViewCell.swift */; };
+		D4329883261F2D460086F8C6 /* CurrencyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4329882261F2D460086F8C6 /* CurrencyStore.swift */; };
 		D452086E261AF29D00D68422 /* CurrencyRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D452086D261AF29D00D68422 /* CurrencyRateTableViewCell.swift */; };
 		D45F7ADB2619B1F800633487 /* SymbolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F7ADA2619B1F800633487 /* SymbolsData.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		22F78E3325E6C46B0038F700 /* CurrencySelectionTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableVC.swift; sourceTree = "<group>"; };
 		D40DE6A626186EC300CB41EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D40DE6B22618724E00CB41EF /* CurrencySelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableViewCell.swift; sourceTree = "<group>"; };
+		D4329882261F2D460086F8C6 /* CurrencyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStore.swift; sourceTree = "<group>"; };
 		D452086D261AF29D00D68422 /* CurrencyRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateTableViewCell.swift; sourceTree = "<group>"; };
 		D45F7ADA2619B1F800633487 /* SymbolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 				22730DB125A9B33B005F12BC /* RatesData.swift */,
 				D45F7ADA2619B1F800633487 /* SymbolsData.swift */,
 				2235DE4C2604A3AA0096C481 /* Currency.swift */,
+				D4329882261F2D460086F8C6 /* CurrencyStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				22730DB525A9B34B005F12BC /* RatesApiManager.swift in Sources */,
 				22733D3F2607524900C896CF /* SettingBackgroundView.swift in Sources */,
 				2235DE4D2604A3AA0096C481 /* Currency.swift in Sources */,
+				D4329883261F2D460086F8C6 /* CurrencyStore.swift in Sources */,
 				D45F7ADB2619B1F800633487 /* SymbolsData.swift in Sources */,
 				D452086E261AF29D00D68422 /* CurrencyRateTableViewCell.swift in Sources */,
 				22730D9925A9A4F7005F12BC /* AppDelegate.swift in Sources */,
@@ -308,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -363,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -382,12 +386,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24UHT2AGTS;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertpinl.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -406,12 +410,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24UHT2AGTS;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertpinl.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;

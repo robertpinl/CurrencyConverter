@@ -17,15 +17,24 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
         nf.minimumFractionDigits = 0
         return nf
     }()
-                
+    
+    
     @IBOutlet weak var ecbDiffTextField: UITextField!
+    @IBOutlet weak var defaultCurrencyButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         ecbRateDiff = defaults.double(forKey: "ecbDiff")
+        
         ecbDiffTextField.text = formatter.string(from: NSNumber(value: ecbRateDiff))
-
+        if (defaults.string(forKey: "defaultRate") != nil) {
+        defaultCurrencyButton.setTitle(defaults.string(forKey: "defaultRate"), for: .normal)
+        } else {
+            defaultCurrencyButton.setTitle(CurrencyStore.shared.currencies[46].symbol, for: .normal)
+        }
+        
     }
     @IBAction func ecbDiffChanged(_ sender: UITextField) {
         let value = sender.text!.replacingOccurrences(of: ",", with: ".")
@@ -60,7 +69,27 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
         return numberOfCharacters <= 5 && newText.isValidDouble(maxDecimalPlaces: 2)
     }
     
+    @IBAction func defaultCurrencyButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "GoToDefaultCurrencySelection" , sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToDefaultCurrencySelection" {
+            let destination = segue.destination as? CurrencySelectionTableVC
+            destination?.delegate = self            
+        }
+    }
+    
     @IBAction func backgroundPressed(_ sender: UITapGestureRecognizer) {
         ecbDiffTextField.resignFirstResponder()
+    }
+}
+
+//Set default rate currency
+extension SettingsVC: CurrencySelectionDelegate {
+    func didSelectCurrency(currency: Currency) {
+        defaultCurrencyButton.setTitle(currency.symbol, for: .normal)
+        defaults.setValue(currency.symbol, forKey: "defaultRate")
     }
 }

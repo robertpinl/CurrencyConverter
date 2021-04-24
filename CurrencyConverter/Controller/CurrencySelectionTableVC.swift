@@ -24,9 +24,35 @@ class CurrencySelectionTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.currencyArray = CurrencyStore.shared.currencies
+        self.filteredData = currencyArray
+                
         apiService.delegate = self
-        self.filteredData = self.currencyArray
-        self.tableView.reloadData()
+        
+//        apiService.getRates(url: K.ratesUrl) { (rates) in
+//            self.apiService.getSymbols(url: K.symbolsUrl) { (symbol) in
+//
+//                var fetchedArray = [Currency]()
+//
+//                for (symbol, rate) in rates.rates {
+//                    let newCurrency = Currency(symbol: symbol, rate: rate, name: nil)
+//                    fetchedArray.append(newCurrency)
+//                }
+//
+//                for name in symbol.symbols {
+//                    if let index = fetchedArray.firstIndex(where: { $0.symbol == name.key }) {
+//                        fetchedArray[index].name = name.value.description
+//                    }
+//                }
+//
+//                self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
+//                self.filteredData = self.currencyArray
+//
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
     }
     
     // MARK: - TableView Delegate and Data Source
