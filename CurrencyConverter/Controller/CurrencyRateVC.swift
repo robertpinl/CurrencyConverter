@@ -21,13 +21,6 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    let formatter: NumberFormatter = {
-        let nf = NumberFormatter()
-        nf.maximumFractionDigits = 2
-        nf.minimumFractionDigits = 0
-        return nf
-    }()
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var titleLabel: UILabel!
@@ -66,31 +59,6 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.filteredData = currencyArray
         
         apiService.delegate = self
-        
-//        apiService.getRates(url: K.ratesUrl) { (rates) in
-//            self.apiService.getSymbols(url: K.symbolsUrl) { (symbol) in
-//                
-//                var fetchedArray = [Currency]()
-//                
-//                for (symbol, rate) in rates.rates {
-//                    let newCurrency = Currency(symbol: symbol, rate: rate, name: nil)
-//                    fetchedArray.append(newCurrency)
-//                }
-//                
-//                for name in symbol.symbols {
-//                    if let index = fetchedArray.firstIndex(where: { $0.symbol == name.key }) {
-//                        fetchedArray[index].name = name.value.description
-//                    }
-//                }
-//                
-//                self.currencyArray = fetchedArray.sorted { $0.symbol < $1.symbol }
-//                self.filteredData = self.currencyArray
-//                
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
     }
     
     // MARK: - TableView Delegates
@@ -108,7 +76,7 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
                         
         let value = (filteredData[indexPath.row].rate! + (filteredData[indexPath.row].rate! * (self.ecbRateDiff / 100))) / rateCurrency.rate!
         
-        cell.rateLabel.text = formatter.string(from: NSNumber(value: value))
+        cell.rateLabel.text = value.twoDecimalPlaceString
         
         return cell
     }

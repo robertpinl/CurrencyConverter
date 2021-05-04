@@ -27,14 +27,6 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    let formatter: NumberFormatter = {
-        let nf = NumberFormatter()
-        nf.maximumFractionDigits = 2
-        nf.minimumFractionDigits = 0
-        return nf
-    }()
-    
-    
     @IBOutlet weak var firstCurrencyButton: UIButton!
     @IBOutlet weak var firstCurrencyTextField: UITextField!
     @IBOutlet weak var secondCurrencyButton: UIButton!
@@ -49,7 +41,10 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
                 
         apiService.delegate = self
-        
+        fetchApi()
+    }
+    
+    func fetchApi() {
         apiService.getRates(url: K.ratesUrl) { (rates) in
             self.apiService.getSymbols(url: K.symbolsUrl) { (symbol) in
                 
@@ -162,7 +157,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
             
             let value = input / Double((firstCurrency?.rate)!) * secondCurrency!.rate!
             if value > 0 {
-                secondCurrencyLabel.text = formatter.string(from: NSNumber(value: value + (value * self.ecbRateDiff / 100)))
+                secondCurrencyLabel.text = (value + (value * self.ecbRateDiff / 100)).twoDecimalPlaceString
             }
         }
         
