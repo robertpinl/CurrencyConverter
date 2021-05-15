@@ -62,7 +62,6 @@ class CurrencyRateVC: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     // MARK: - TableView Delegates
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredData.count
     }

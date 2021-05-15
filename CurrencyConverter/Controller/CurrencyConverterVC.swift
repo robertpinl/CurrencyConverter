@@ -110,7 +110,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // Switch currencies
+    //MARK: - Switch currencies
     @IBAction func switchCurrenciesPressed(_ sender: UIButton) {
         guard let first = firstCurrency, let second = secondCurrency else { return }
         

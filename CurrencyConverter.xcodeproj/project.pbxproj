@@ -30,6 +30,7 @@
 		D452086E261AF29D00D68422 /* CurrencyRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D452086D261AF29D00D68422 /* CurrencyRateTableViewCell.swift */; };
 		D45F26AB263947DC00CA0CA0 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F26AA263947DC00CA0CA0 /* Double+Extensions.swift */; };
 		D45F7ADB2619B1F800633487 /* SymbolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F7ADA2619B1F800633487 /* SymbolsData.swift */; };
+		D48F637B26502CA0006F587F /* TextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F637A26502CA0006F587F /* TextField+Extensions.swift */; };
 		D4D97AA9264EC32D007B6430 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D97AA8264EC32D007B6430 /* SettingsVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		D452086D261AF29D00D68422 /* CurrencyRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateTableViewCell.swift; sourceTree = "<group>"; };
 		D45F26AA263947DC00CA0CA0 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		D45F7ADA2619B1F800633487 /* SymbolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsData.swift; sourceTree = "<group>"; };
+		D48F637A26502CA0006F587F /* TextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Extensions.swift"; sourceTree = "<group>"; };
 		D4D97AA8264EC32D007B6430 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 				22436E342608855600D61874 /* Alert+Extension.swift */,
 				22733D412607583600C896CF /* String+Extensions.swift */,
 				D45F26AA263947DC00CA0CA0 /* Double+Extensions.swift */,
+				D48F637A26502CA0006F587F /* TextField+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				22436E352608855600D61874 /* Alert+Extension.swift in Sources */,
 				22733D422607583600C896CF /* String+Extensions.swift in Sources */,
 				D40DE6A726186EC300CB41EF /* Constants.swift in Sources */,
+				D48F637B26502CA0006F587F /* TextField+Extensions.swift in Sources */,
 				22730D9D25A9A4F7005F12BC /* CurrencyConverterVC.swift in Sources */,
 				22F78E3425E6C46B0038F700 /* CurrencySelectionTableVC.swift in Sources */,
 				22730DB525A9B34B005F12BC /* RatesApiManager.swift in Sources */,

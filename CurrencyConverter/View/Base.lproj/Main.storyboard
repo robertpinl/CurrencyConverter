@@ -225,7 +225,7 @@
             <objects>
                 <tableViewController id="liB-dV-1KJ" customClass="CurrencySelectionTableVC" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FPA-zx-Ozf">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="595.66666666666663"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="WF4-dQ-L0s">
@@ -460,7 +460,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKz-jJ-sA4">
-                                <rect key="frame" x="0.0" y="111.33333333333331" width="390" height="649.66666666666674"/>
+                                <rect key="frame" x="0.0" y="111.33333333333331" width="390" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="QGY-K8-I3r"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="Es8-US-RXV" kind="embed" id="aKr-1w-tzX"/>
                                 </connections>
@@ -474,7 +477,6 @@
                             <constraint firstItem="TKz-jJ-sA4" firstAttribute="top" secondItem="T5f-FN-IBy" secondAttribute="bottom" constant="20" id="DSn-94-itF"/>
                             <constraint firstItem="TKz-jJ-sA4" firstAttribute="leading" secondItem="1mD-qP-Lj3" secondAttribute="leading" id="EOJ-8Z-BHd"/>
                             <constraint firstItem="T5f-FN-IBy" firstAttribute="centerX" secondItem="uUa-6j-3gV" secondAttribute="centerX" id="HXK-Qu-Eqy"/>
-                            <constraint firstItem="1mD-qP-Lj3" firstAttribute="bottom" secondItem="TKz-jJ-sA4" secondAttribute="bottom" id="jJm-LN-FJW"/>
                             <constraint firstItem="T5f-FN-IBy" firstAttribute="top" secondItem="1mD-qP-Lj3" secondAttribute="top" constant="20" id="umO-f0-kN9"/>
                         </constraints>
                     </view>
@@ -489,7 +491,7 @@
             <objects>
                 <tableViewController id="Es8-US-RXV" customClass="SettingsTableVC" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xel-YE-YvG">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="649.66666666666663"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection id="s5o-3Y-DYh">
@@ -549,6 +551,7 @@
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     <connections>
                                                         <action selector="ecbDiffChanged:" destination="Es8-US-RXV" eventType="editingDidEnd" id="VYV-ld-auQ"/>
+                                                        <outlet property="delegate" destination="Es8-US-RXV" id="HSC-1g-Hde"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocy-S8-9KY">
@@ -587,7 +590,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCf-9n-PN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2565" y="1469"/>
+            <point key="canvasLocation" x="3378" y="592"/>
         </scene>
         <!--NavController-->
         <scene sceneID="Ct5-U5-5fM">

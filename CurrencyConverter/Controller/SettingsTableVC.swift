@@ -11,13 +11,6 @@ class SettingsTableVC: UITableViewController, UITextFieldDelegate {
     
     let defaults = UserDefaults.standard
     var ecbRateDiff = 0.0
-    let formatter: NumberFormatter = {
-        let nf = NumberFormatter()
-        nf.maximumFractionDigits = 2
-        nf.minimumFractionDigits = 0
-        return nf
-    }()
-    
     
     @IBOutlet weak var ecbDiffTextField: UITextField!
     @IBOutlet weak var defaultCurrencyButton: UIButton!
@@ -25,9 +18,11 @@ class SettingsTableVC: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ecbDiffTextField.addDoneButton()
                 
         ecbRateDiff = defaults.double(forKey: "ecbDiff")
-        ecbDiffTextField.text = formatter.string(from: NSNumber(value: ecbRateDiff))
+        ecbDiffTextField.text = ecbRateDiff.twoDecimalPlaceString
 
         if (defaults.string(forKey: "defaultRate") != nil) {
         defaultCurrencyButton.setTitle(defaults.string(forKey: "defaultRate"), for: .normal)
@@ -71,7 +66,6 @@ class SettingsTableVC: UITableViewController, UITextFieldDelegate {
     
     @IBAction func defaultCurrencyButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToDefaultCurrencySelection" , sender: self)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
