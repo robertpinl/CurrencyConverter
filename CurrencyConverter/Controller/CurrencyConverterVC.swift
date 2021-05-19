@@ -42,6 +42,7 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
                 
         apiService.delegate = self
         fetchApi()
+        firstCurrencyTextField.addDoneButton()
     }
     
     func fetchApi() {
