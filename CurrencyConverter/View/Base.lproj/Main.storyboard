@@ -229,22 +229,22 @@
             <objects>
                 <tableViewController id="liB-dV-1KJ" customClass="CurrencySelectionTableVC" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FPA-zx-Ozf">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="WF4-dQ-L0s">
                             <rect key="frame" x="0.0" y="0.0" width="428" height="113"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gJc-5f-wq6">
-                                    <rect key="frame" x="20" y="17" width="37" height="35.666666666666671"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gJc-5f-wq6">
+                                    <rect key="frame" x="20" y="19" width="29" height="27.666666666666671"/>
                                     <color key="tintColor" name="brandBlue"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="gJc-5f-wq6" secondAttribute="height" multiplier="1:1" id="aRh-0T-B5R"/>
                                     </constraints>
                                 </imageView>
                                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-GJ-i3e">
-                                    <rect key="frame" x="15" y="69" width="398" height="44"/>
+                                    <rect key="frame" x="15" y="59" width="398" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="Hpz-kx-N7N"/>
                                     </constraints>
@@ -259,12 +259,12 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <gestureRecognizers/>
                             <constraints>
-                                <constraint firstItem="6Qx-GJ-i3e" firstAttribute="top" secondItem="gJc-5f-wq6" secondAttribute="bottom" constant="16" id="0g0-yQ-ms4"/>
+                                <constraint firstItem="6Qx-GJ-i3e" firstAttribute="top" secondItem="gJc-5f-wq6" secondAttribute="bottom" constant="12" id="0g0-yQ-ms4"/>
                                 <constraint firstItem="6Qx-GJ-i3e" firstAttribute="leading" secondItem="WF4-dQ-L0s" secondAttribute="leading" constant="15" id="1Gl-z0-etJ"/>
-                                <constraint firstAttribute="bottom" secondItem="6Qx-GJ-i3e" secondAttribute="bottom" id="L8n-mY-GlK"/>
-                                <constraint firstItem="gJc-5f-wq6" firstAttribute="top" secondItem="WF4-dQ-L0s" secondAttribute="top" constant="16" id="VXg-ib-dJ8"/>
+                                <constraint firstAttribute="bottom" secondItem="6Qx-GJ-i3e" secondAttribute="bottom" constant="10" id="L8n-mY-GlK"/>
+                                <constraint firstItem="gJc-5f-wq6" firstAttribute="leading" secondItem="6Qx-GJ-i3e" secondAttribute="leading" constant="5" id="LZo-wr-h8c"/>
+                                <constraint firstItem="gJc-5f-wq6" firstAttribute="top" secondItem="WF4-dQ-L0s" secondAttribute="top" constant="18" id="VXg-ib-dJ8"/>
                                 <constraint firstAttribute="trailing" secondItem="6Qx-GJ-i3e" secondAttribute="trailing" constant="15" id="VaU-O7-fUI"/>
-                                <constraint firstItem="gJc-5f-wq6" firstAttribute="leading" secondItem="WF4-dQ-L0s" secondAttribute="leading" constant="20" id="rAn-fI-MUi"/>
                             </constraints>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="5Mk-7w-ack" appends="YES" id="XYZ-32-xnl"/>
@@ -648,8 +648,8 @@
         <image name="arrow.left.arrow.right.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
-        <image name="chevron.left.circle" catalog="system" width="128" height="121"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <namedColor name="backgroundColor">
             <color red="0.94999998807907104" green="0.94999998807907104" blue="0.94999998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
