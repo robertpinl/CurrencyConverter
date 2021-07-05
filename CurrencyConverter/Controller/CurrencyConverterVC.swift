@@ -193,7 +193,6 @@ class CurrencyConverterVC: UIViewController, UITextFieldDelegate {
     @IBAction func backgroundPressed(_ sender: UITapGestureRecognizer) {
         firstCurrencyTextField.resignFirstResponder()
     }
-    
 }
 //MARK: - Currency Selection Protocol
 extension CurrencyConverterVC: CurrencySelectionDelegate {
